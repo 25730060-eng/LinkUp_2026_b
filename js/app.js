@@ -88,5 +88,56 @@
     go('detail');
   });
 
+
+  // ----- 유형 필터 (사례 목록·저장함 공통) -----
+  // 칩(data-type)을 누르면 카드(data-type)를 거르고, 건수와 '결과 없음' 영역을 갱신
+  function setupTypeFilter(cfg) {
+    var screen = document.getElementById(cfg.screenId);
+    var chips = screen.querySelectorAll('.chip[data-type]');
+    var cards = document.getElementById(cfg.listId).querySelectorAll('.case-card');
+    var countEl = document.getElementById(cfg.countId);
+    var emptyEl = document.getElementById(cfg.emptyId);
+    var listEl = document.getElementById(cfg.listId);
+
+    function apply(type) {
+      var visible = 0;
+      chips.forEach(function (c) {
+        c.setAttribute('aria-pressed', c.dataset.type === type ? 'true' : 'false');
+      });
+      cards.forEach(function (card) {
+        var show = !type || card.dataset.type === type;
+        card.hidden = !show;
+        if (show) visible++;
+      });
+      countEl.textContent = visible;
+      emptyEl.hidden = visible !== 0;
+      listEl.hidden = visible === 0;
+    }
+
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () { apply(c.dataset.type); });
+    });
+    (cfg.resetIds || []).forEach(function (id) {
+      document.getElementById(id).addEventListener('click', function () { apply(''); });
+    });
+
+    var pressed = screen.querySelector('.chip[data-type][aria-pressed="true"]');
+    apply(pressed ? pressed.dataset.type : '');       // 처음 표시: HTML에서 선택된 칩 기준
+  }
+
+  setupTypeFilter({ screenId: 'screen-cases', listId: 'case-list', countId: 'result-count',
+                    emptyId: 'state-empty', resetIds: ['btn-reset', 'btn-all'] });
+  setupTypeFilter({ screenId: 'screen-saved', listId: 'saved-case-list', countId: 'saved-count-num',
+                    emptyId: 'state-saved-filter-empty', resetIds: ['btn-saved-all'] });
+
+  // 조건 더보기 펼치기·접기
+  var btnMore = document.getElementById('btn-more');
+  var morePanel = document.getElementById('more-filters');
+  btnMore.addEventListener('click', function () {
+    var open = morePanel.hidden;
+    morePanel.hidden = !open;
+    btnMore.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
   show(currentName());
 })();
