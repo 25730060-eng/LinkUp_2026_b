@@ -62,14 +62,15 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--bar-h) + 12px);width:min(448px,calc(100% - 32px));background:var(--ink);color:#fff;padding:12px 14px;font-weight:700;z-index:30}
 
 /* 사례 목록 */
-.condition-summary{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:6px;min-height:48px;padding:0 16px;background:var(--soft);border-bottom:1.5px solid var(--line);font-weight:700}
 .filters{display:flex;flex-direction:column;gap:10px}
 .chips,.more-filters{display:flex;gap:6px;flex-wrap:wrap}
 .chip{min-height:44px;padding:0 10px;white-space:nowrap;font-size:17px;border:1.5px solid var(--line);background:#fff;font-weight:700;cursor:pointer;border-radius:22px}
 .chip[aria-pressed="true"]{background:var(--ink);color:#fff}
 .chip-more{border-style:dashed}
 .sort-row{display:flex;align-items:center;gap:10px}
-.sort-row label{flex:none;font-weight:700}
+.sort-row label{flex:none;font-weight:700;margin-left:auto}
+.result-count{font-size:20px;flex:none}
+.sort-row .select{flex:0 1 190px;min-width:0}
 .card-list{display:flex;flex-direction:column;gap:12px}
 .case-card{border:1.5px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:6px}
 .case-type{align-self:flex-start;border:1.5px solid var(--line);padding:0 8px;font-weight:700;font-size:17px}
@@ -80,9 +81,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 #btn-save-case[aria-pressed="true"]{background:#fff;color:var(--ink)}
 
 /* 저장함 */
-dialog{width:min(340px,calc(100% - 32px));border:2px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:14px}
-dialog[open]{display:flex}
-dialog::backdrop{background:rgba(0,0,0,.45)}
 
 /* 하단 고정: 저장 바(2단계) / 탭바(1단계) */
 .bottom-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(480px,100%);padding:8px 16px;background:#fff;border-top:2px solid var(--line);z-index:20;min-height:var(--bar-h)}
