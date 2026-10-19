@@ -12,6 +12,9 @@
   var btnCheck = document.getElementById('btn-check');
   var inputError = document.getElementById('input-error');
   var resultText = document.getElementById('result-text');
+  var btnPaste = document.getElementById('btn-paste');
+  var pasteFail = document.getElementById('paste-fail');
+  var detailOrigin = 'cases';                           // 상세로 들어온 화면 (cases 또는 saved)
 
   function currentName() {
     var name = location.hash.replace('#', '');
@@ -27,7 +30,7 @@
     });
 
     // 탭 강조는 1단계 화면에서만, 2단계는 부모 탭 기준
-    var tabName = TAB_SCREENS.indexOf(name) !== -1 ? name : PARENT[name];
+    var tabName = TAB_SCREENS.indexOf(name) !== -1 ? name : (name === 'detail' ? detailOrigin : PARENT[name]);
     tabs.forEach(function (a) {
       if (a.dataset.tab === tabName) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
@@ -42,7 +45,7 @@
   }
 
   function goBack(fromName) {
-    go(PARENT[fromName] || 'home');
+    go(fromName === 'detail' ? detailOrigin : (PARENT[fromName] || 'home'));
   }
 
   window.addEventListener('hashchange', function () { show(currentName()); });
@@ -51,6 +54,18 @@
   input.addEventListener('input', function () {
     btnCheck.disabled = !input.value.trim();
     if (!inputError.hidden && input.value.trim()) inputError.hidden = true;
+    pasteFail.hidden = true;
+  });
+
+  // 붙여넣기 버튼: 클립보드 읽기가 막히면 기존 방법(길게 눌러 붙여넣기)을 안내
+  function pasteFailed() { pasteFail.hidden = false; input.focus(); }
+  btnPaste.addEventListener('click', function () {
+    if (!navigator.clipboard || !navigator.clipboard.readText) { pasteFailed(); return; }
+    navigator.clipboard.readText().then(function (text) {
+      if (!text.trim()) { pasteFailed(); return; }
+      input.value = text;
+      input.dispatchEvent(new Event('input'));
+    }).catch(pasteFailed);
   });
 
   // 유형 확인하기 → 확인 결과 (원문은 변수·저장소에 보관하지 않고 화면에만 표시)
@@ -68,6 +83,7 @@
   document.addEventListener('click', function (e) {
     var open = e.target.closest('.btn-open');
     if (!open) return;
+    detailOrigin = currentName() === 'saved' ? 'saved' : 'cases';   // 뒤로가기 때 돌아갈 화면
     document.getElementById('case-detail').dataset.id = open.dataset.id;
     go('detail');
   });
