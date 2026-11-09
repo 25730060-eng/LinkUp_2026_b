@@ -1,0 +1,254 @@
+/* 모바일 세로 375px 기준. 본문 16px 이상, 버튼 44px 이상. 색은 로우파이(흑백) */
+:root{--ink:#111;--line:#111;--soft:#eee;--mid:#ccc;--tab-h:56px;--bar-h:76px;--hdr-h:56px}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font:18px/1.5 system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;overflow-wrap:anywhere}
+[hidden]{display:none !important}
+h1,h2,h3,p,ul{margin:0}
+ul{padding:0;list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+#app{max-width:480px;min-height:100vh;min-height:100dvh;margin:0 auto;position:relative;border-inline:1px solid var(--mid)}
+.screen{min-height:100vh;min-height:100dvh}
+.screen-body{padding:16px 16px calc(var(--tab-h) + 12px);display:flex;flex-direction:column;gap:14px}
+.screen-body.has-bottom-bar{padding-bottom:calc(var(--bar-h) + 12px)}
+
+/* 헤더 */
+.app-header{display:flex;align-items:center;gap:10px;min-height:var(--hdr-h);padding:6px 16px;border-bottom:2px solid var(--line);background:#fff}
+.app-title{font-size:22px;line-height:1.3;font-weight:700;min-width:0}
+.logo{flex:none;width:40px;height:40px}
+.btn-icon{flex:none;width:44px;height:44px;border:1.5px solid var(--line);background:var(--soft);font-size:20px;font-weight:700;cursor:pointer}
+
+/* 글 요소 */
+.section-title{font-size:20px;font-weight:700;line-height:1.35}
+.detail-heading{font-size:24px;line-height:1.35}
+.label{font-size:18px;font-weight:700}
+.help,.privacy-note,.notice-small,.state-desc,.case-meta{font-size:18px;color:#222}
+.notice{border:1.5px dashed var(--line);padding:10px 12px;font-weight:700}
+.field-error{font-weight:700}
+.result-type{font-size:24px;font-weight:700;line-height:1.35}
+.result-text{border:1.5px solid var(--line);padding:12px;line-height:1.7}
+mark{background:#cfcfcf;text-decoration:underline;font-weight:700;color:inherit}
+.check-list,.plain-list{display:flex;flex-direction:column;gap:8px}
+.check-list li{border:1.5px solid var(--line);padding:10px 12px}
+.plain-list li{padding-left:1.1em;position:relative}
+.plain-list li::before{content:"•";position:absolute;left:0}
+
+#case-detail{display:flex;flex-direction:column;gap:10px}
+#case-detail .section-title{margin-top:8px}
+.btn{color:var(--ink)}
+.btn-primary{color:#fff}
+/* 입력·버튼 */
+.input-area{width:100%;min-height:190px;border:1.5px solid var(--line);padding:12px;resize:vertical;border-radius:0}
+.input-line,.select{width:100%;min-height:48px;border:1.5px solid var(--line);padding:0 12px;border-radius:0;background:#fff}
+.btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:6px 14px;border:1.5px solid var(--line);background:var(--soft);font-weight:700;text-align:center;text-decoration:none;cursor:pointer;border-radius:0}
+.btn-lg{min-height:60px;font-size:20px}
+.btn-wide{width:100%}
+.btn:disabled{background:var(--mid);color:#222;border-style:dashed;cursor:not-allowed}
+.btn-text{min-height:44px;padding:0 8px;border:0;background:none;font-weight:700;text-decoration:underline;cursor:pointer;margin-left:auto}
+.btn-row,.hotline-links{display:flex;gap:8px;flex-wrap:wrap}
+.btn-row>.btn,.hotline-links>.btn{flex:1 1 140px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+
+/* 긴급 신고 */
+.hotline{margin-top:6px;border:1.5px solid var(--line);background:var(--soft);padding:12px;display:flex;flex-direction:column;gap:10px}
+.hotline-title{font-size:20px}
+
+/* 상태 박스 */
+.state-box{border:1.5px dashed var(--line);background:var(--soft);padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.state-title{font-weight:700;font-size:20px}
+.skeleton{width:100%;height:84px;background:var(--mid)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--bar-h) + 12px);width:min(448px,calc(100% - 32px));background:var(--ink);color:#fff;padding:12px 14px;font-weight:700;z-index:30}
+
+/* 사례 목록 */
+.filters{display:flex;flex-direction:column;gap:10px}
+.chips,.more-filters{display:flex;gap:6px;flex-wrap:wrap}
+.chip{min-height:44px;padding:0 10px;white-space:nowrap;font-size:17px;border:1.5px solid var(--line);background:#fff;font-weight:700;cursor:pointer;border-radius:22px}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+.chip-more{border-style:dashed}
+.sort-row{display:flex;align-items:center;gap:10px}
+.sort-row label{flex:none;font-weight:700;margin-left:auto}
+.result-count{font-size:20px;flex:none}
+.sort-row .select{flex:0 1 190px;min-width:0}
+.card-list{display:flex;flex-direction:column;gap:12px}
+.case-card{border:1.5px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:6px}
+.case-type{align-self:flex-start;border:1.5px solid var(--line);padding:0 8px;font-weight:700;font-size:17px}
+.case-title{font-size:20px;line-height:1.4}
+.case-actions{display:flex;gap:8px;margin-top:6px}
+.case-actions .btn{flex:1 1 0;min-height:44px}
+.btn-save-card[aria-pressed="true"],.btn-save-case[aria-pressed="true"]{background:var(--ink);color:#fff}
+#btn-save-case[aria-pressed="true"]{background:#fff;color:var(--ink)}
+
+/* 마이페이지 */
+
+/* 하단 고정: 저장 바(2단계) / 탭바(1단계) */
+.bottom-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(480px,100%);padding:8px 16px;background:#fff;border-top:2px solid var(--line);z-index:20;min-height:var(--bar-h)}
+.bottom-bar .btn{width:100%}
+.tabbar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(480px,100%);display:flex;padding-bottom:env(safe-area-inset-bottom);background:#fff;border-top:2px solid var(--line);z-index:20}
+.tab{flex:1 1 0;min-height:var(--tab-h);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--ink);text-decoration:none;border-right:1px solid var(--line)}
+.tab:last-child{border-right:0}
+.tab[aria-current="page"]{background:var(--ink);color:#fff}
+/* 2단계 화면이 보이면 탭바를 숨김 (JS 없이도 동작) */
+#app:has(#screen-result:not([hidden])) #tabbar,
+#app:has(#screen-detail:not([hidden])) #tabbar{display:none}
+
+@media (max-width:359px){
+  .app-title{font-size:19px}
+  .btn-lg{font-size:18px}
+  .tab{font-size:17px}
+}
+
+.btn-primary,.btn-primary:disabled{--x:0}
+.btn.btn-primary{background:var(--ink);color:#fff}
+.btn.btn-primary:disabled{background:var(--mid);color:#222}
+
+#result-found{display:flex;flex-direction:column;gap:12px}
+
+/* 이미 보냈다면 (접이식) */
+.fold{border:2px solid var(--line);background:#fff}
+.fold-summary{display:flex;align-items:center;min-height:56px;padding:8px 14px;font-weight:700;font-size:20px;cursor:pointer;list-style:none}
+.fold-summary::-webkit-details-marker{display:none}
+.fold-summary::after{content:"＋";margin-left:auto;padding-left:10px}
+.fold[open]>.fold-summary::after{content:"－"}
+.fold[open]>.fold-summary{border-bottom:1.5px solid var(--line);background:var(--soft)}
+.fold-body{display:flex;flex-direction:column;gap:10px;padding:14px}
+.fold-inner{border-width:1.5px;border-style:dashed}
+.fold-inner .fold-summary{font-size:18px;min-height:48px}
+.steps{display:flex;flex-direction:column;gap:10px;padding-left:1.4em}
+.steps li{padding-left:.2em}
+.steps a{font-weight:700;color:var(--ink)}
+#already-sent{border-color:var(--ink)}
+
+/* 홈: 예시 기사 */
+.news{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.news-card{border:1.5px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:8px}
+.news-headline{font-size:20px;line-height:1.4}
+.news-headline a{color:var(--ink)}
+.news-summary{font-size:18px}
+
+/* 유형 필터 라벨·마이페이지 건수 */
+.filter-label{font-weight:700;font-size:18px}
+.saved-count{font-size:18px}
+
+/* ===== 디자인: 현관문 콘셉트 ('누구세요?' 하고 확인한 뒤 문을 연다) =====
+   색: 나무문 #5A3B27 · 바탕 #FBF7EC · 연노랑 선 #EBDC9E · 황동 #C9A13B · 긴급(진한 빨강) #8E1B25 · 안심 #2F7A57
+   글: 시스템 한글 서체, 제목 800 굵기. 장식은 현관문 하나에만 쓰고 나머지는 선과 여백으로 정리 */
+:root{
+  --steel:#5A3B27;--steel-2:#6F4A33;--frame:#FBF7EC;--brass:#C9A13B;--brass-soft:#F6EBC6;
+  --alert:#8E1B25;--alert-dark:#68121A;--alert-soft:#F7E5E6;--safe:#2F7A57;
+  --ink:#2A1D14;--sub:#6B5646;--rule:#EBDC9E;--paper:#fff;
+}
+body{background:var(--frame);color:var(--ink);font-family:"Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;font-weight:500}
+#app{background:var(--frame);border-inline:0;box-shadow:0 0 0 1px var(--rule)}
+.screen-body{gap:18px;padding-top:20px}
+h1,h2,h3{letter-spacing:-.025em}
+
+/* 헤더: 문틀색 바탕, 로고만 포인트 */
+.app-header{background:var(--frame);color:var(--ink);border-bottom:1px solid var(--rule);min-height:64px}
+.logo{width:40px;height:40px}
+.app-title{font-size:23px;font-weight:800;letter-spacing:-.03em}
+.btn-icon{background:transparent;border:1.5px solid var(--steel);color:var(--steel);border-radius:10px}
+
+/* 현관문: 홈 상단 입력 영역 */
+.door{position:relative;background:var(--steel);color:#fff;border-radius:170px 170px 12px 12px;padding:70px 18px 20px;display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.peephole{position:absolute;top:24px;left:50%;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#8a6a50 0,#2b190e 62%);box-shadow:0 0 0 3px var(--brass)}
+.door-title{font-size:40px;line-height:1.1;font-weight:800;text-align:center;letter-spacing:-.04em}
+.door-sub{text-align:center;color:#F3E6CE;font-size:18px;margin-bottom:6px}
+.door .input-area{min-height:150px;background:var(--frame);color:var(--ink);border:0;border-radius:10px;box-shadow:none}
+.door .input-area::placeholder{color:#8a7561}
+.door .btn{background:transparent;color:#fff;border:1.5px solid #D9BE62;border-radius:10px}
+.door .btn.btn-primary{background:#fff;color:var(--steel);border-color:#fff;box-shadow:none;font-size:21px;font-weight:800}
+.door .btn.btn-primary:disabled{background:rgba(255,255,255,.22);color:#e8dcc4;border:1.5px solid transparent}
+.door .help,.door .privacy-note{color:#E8D8BC;font-size:17px}
+.door .privacy-note{text-align:center}
+.door .field-error{color:#FFE3EA;background:rgba(142,27,37,.6);padding:8px 10px;border-radius:8px}
+
+/* 글·공통 요소 */
+.section-title{font-size:22px;font-weight:800;color:var(--ink)}
+.help,.notice-small,.state-desc,.case-meta,.privacy-note{color:var(--sub)}
+.notice{background:var(--brass-soft);border:0;border-left:5px solid var(--brass);border-radius:6px;color:var(--ink)}
+.result-text,.check-list li{background:var(--paper);border:1px solid var(--rule);border-radius:8px}
+.check-list li{position:relative;padding-left:42px}
+.check-list li::before{content:"";position:absolute;left:14px;top:50%;width:16px;height:16px;margin-top:-8px;border:2px solid var(--safe);border-radius:4px}
+mark{background:#FFE29A;text-decoration:none;border-radius:3px;padding:0 3px}
+.btn{background:var(--paper);color:var(--steel);border:1.5px solid var(--steel);border-radius:10px}
+.btn.btn-primary{background:var(--steel);color:#fff;border-color:var(--steel);box-shadow:none}
+.btn.btn-primary:active{background:var(--steel-2)}
+.btn:disabled,.btn.btn-primary:disabled{background:#EFE6D0;color:#7a6755;border:1.5px solid #EFE6D0}
+.input-line,.select,.input-area{border-radius:10px;border:1.5px solid #D9BE62;background:var(--paper)}
+.btn-text{color:var(--steel)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+
+/* 뉴스: 신문 스크랩처럼 선만 사용 */
+.news{gap:0;margin-top:4px}
+.news-card{background:transparent;border:0;border-top:2px solid var(--steel);border-radius:0;padding:14px 0 4px}
+.news-headline{font-weight:800}
+.news-headline a{color:var(--ink)}
+
+/* 긴급 신고: 빨간 띠 */
+.hotline{background:var(--alert);color:#fff;border:0;border-radius:12px;padding:16px;margin-top:8px}
+.hotline-title{color:#fff;font-size:22px;font-weight:800}
+.hotline .btn,.hotline-links>.btn{background:#fff;color:var(--alert-dark);border:0;font-size:19px;font-weight:800}
+.hotline .btn::before,.hotline-links>.btn::before{content:"☎";margin-right:8px;font-size:20px}
+.hotline .notice-small{color:#FCE6E8}
+#result-found .hotline-links>.btn{background:var(--alert);color:#fff}
+#btn-similar{background:var(--paper);color:var(--steel)}
+
+/* 상태 박스·접이식 */
+.state-box{background:var(--paper);border:1.5px dashed #D9BE62;border-radius:10px}
+.skeleton{background:#EFE6D0;border-radius:6px}
+.fold{background:var(--paper);border:2px solid var(--alert);border-radius:10px;overflow:hidden}
+.fold-summary{color:var(--alert-dark);font-weight:800}
+.fold[open]>.fold-summary{background:var(--alert-soft);border-bottom-color:#E8BBBE}
+.fold-inner{border:1.5px dashed #D9BE62;border-radius:8px}
+.fold-inner .fold-summary{color:var(--steel)}
+.steps a{color:var(--steel)}
+
+/* 사례 목록: 카드 대신 구분선 행 */
+.chip{background:var(--paper);color:var(--steel);border:1.5px solid #D9BE62;border-radius:24px;font-weight:700}
+.chip[aria-pressed="true"]{background:var(--steel);color:#fff;border-color:var(--steel)}
+.chip-more{border-style:dashed}
+.card-list{gap:0}
+.case-card{background:transparent;border:0;border-top:1px solid var(--rule);border-radius:0;padding:18px 0;box-shadow:none;gap:8px}
+.card-list>.case-card:first-child{border-top:2px solid var(--steel)}
+.case-type{border:0;padding:0;background:none;font-size:17px;font-weight:800;color:var(--steel);display:flex;align-items:center;gap:8px}
+.case-type::before{content:"";width:12px;height:12px;border-radius:3px;background:var(--steel)}
+.case-card[data-type="agency"] .case-type::before{background:var(--brass)}
+.case-card[data-type="loan"] .case-type::before{background:var(--safe)}
+.case-card[data-type="shipping"] .case-type::before{background:#8a4a2a}
+.case-title{font-size:21px;font-weight:800;line-height:1.4}
+.case-actions .btn.btn-open{background:var(--steel);color:#fff;border-color:var(--steel)}
+.btn-save-card[aria-pressed="true"],.btn-save-case[aria-pressed="true"]{background:var(--brass-soft);color:var(--steel);border-color:var(--brass)}
+#btn-save-case[aria-pressed="true"]{background:var(--brass-soft);color:var(--steel)}
+.toast{background:var(--steel);border-radius:10px}
+
+/* 사례 상세 */
+#case-detail .section-title{border-left:5px solid var(--brass);padding-left:10px;font-size:20px}
+.detail-heading{font-weight:800}
+
+/* 하단 고정 영역 */
+.bottom-bar{background:var(--frame);border-top:1px solid var(--rule);box-shadow:none}
+.tabbar{background:var(--frame);border-top:1px solid var(--rule);box-shadow:none}
+.tab{flex-direction:column;gap:2px;min-height:64px;border-right:0;color:var(--sub);font-size:16px;font-weight:700}
+.tab-ico{width:26px;height:26px}
+.tab[aria-current="page"]{background:transparent;color:var(--steel)}
+.tab[aria-current="page"]::after{content:"";position:absolute;top:0;left:22%;right:22%;height:4px;background:var(--brass);border-radius:0 0 4px 4px}
+.tab{position:relative}
+.tab[aria-current="page"] .tab-ico{color:var(--steel)}
+:root{--tab-h:64px}
+/* 홈 첫 화면에 '유형 확인하기'까지 보이도록 현관문 높이 조정 */
+.door{padding-top:62px;gap:10px;border-radius:160px 160px 12px 12px}
+.peephole{top:22px}
+.door-title{font-size:36px}
+.door-sub{font-size:18px;line-height:1.4;margin-bottom:2px}
+.door .input-area{min-height:112px}
+.door .help{margin-top:-2px;line-height:1.45}
+
+/* 긴급 신고: 빨간 바탕 위 글자를 흰색·굵게, 안내 문구는 크기와 굵기 보강 */
+.hotline{padding:18px 16px}
+.hotline-title{color:#fff;font-size:24px;font-weight:800}
+.hotline .btn,.hotline-links>.btn{font-size:21px;font-weight:800;min-height:56px;box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.hotline .notice-small{color:#fff;font-size:18px;font-weight:600;line-height:1.5}
+.hotline .hotline-links{flex-direction:column}
+.hotline .hotline-links>.btn{flex:none;width:100%;word-break:keep-all}
