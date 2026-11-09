@@ -9,10 +9,10 @@ ul{padding:0;list-style:none}
 button,input,select,textarea{font:inherit;color:inherit}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-#app{max-width:480px;min-height:100vh;margin:0 auto;position:relative;border-inline:1px solid var(--mid)}
-.screen{min-height:100vh}
-.screen-body{padding:16px 16px calc(var(--tab-h) + 24px);display:flex;flex-direction:column;gap:14px}
-.screen-body.has-bottom-bar{padding-bottom:calc(var(--bar-h) + 24px)}
+#app{max-width:480px;min-height:100vh;min-height:100dvh;margin:0 auto;position:relative;border-inline:1px solid var(--mid)}
+.screen{min-height:100vh;min-height:100dvh}
+.screen-body{padding:16px 16px calc(var(--tab-h) + 12px);display:flex;flex-direction:column;gap:14px}
+.screen-body.has-bottom-bar{padding-bottom:calc(var(--bar-h) + 12px)}
 
 /* 헤더 */
 .app-header{display:flex;align-items:center;gap:10px;min-height:var(--hdr-h);padding:6px 16px;border-bottom:2px solid var(--line);background:#fff}
@@ -80,12 +80,12 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .btn-save-card[aria-pressed="true"],.btn-save-case[aria-pressed="true"]{background:var(--ink);color:#fff}
 #btn-save-case[aria-pressed="true"]{background:#fff;color:var(--ink)}
 
-/* 저장함 */
+/* 마이페이지 */
 
 /* 하단 고정: 저장 바(2단계) / 탭바(1단계) */
 .bottom-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(480px,100%);padding:8px 16px;background:#fff;border-top:2px solid var(--line);z-index:20;min-height:var(--bar-h)}
 .bottom-bar .btn{width:100%}
-.tabbar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(480px,100%);display:flex;background:#fff;border-top:2px solid var(--line);z-index:20}
+.tabbar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(480px,100%);display:flex;padding-bottom:env(safe-area-inset-bottom);background:#fff;border-top:2px solid var(--line);z-index:20}
 .tab{flex:1 1 0;min-height:var(--tab-h);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--ink);text-decoration:none;border-right:1px solid var(--line)}
 .tab:last-child{border-right:0}
 .tab[aria-current="page"]{background:var(--ink);color:#fff}
@@ -127,6 +127,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .news-headline a{color:var(--ink)}
 .news-summary{font-size:18px}
 
-/* 유형 필터 라벨·저장함 건수 */
+/* 유형 필터 라벨·마이페이지 건수 */
 .filter-label{font-weight:700;font-size:18px}
 .saved-count{font-size:18px}
