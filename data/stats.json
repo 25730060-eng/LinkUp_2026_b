@@ -1,0 +1,129 @@
+{
+  "dataset": "cyber_crime_stats",
+  "sources": [
+    {
+      "name": "경찰청_연도별 사이버 범죄 통계 현황_20251231",
+      "provider": "경찰청",
+      "url": "https://www.data.go.kr/data/15053887/fileData.do",
+      "modified": "2026-09-03",
+      "license": "이용허락범위 제한 없음(공공누리 유형 미표기)",
+      "fileFormat": "CSV(CP949)→UTF-8 변환"
+    },
+    {
+      "name": "경찰청_정보탈취 연계형 범죄 현황_20251231",
+      "provider": "경찰청",
+      "url": "https://www.data.go.kr/data/15158413/fileData.do",
+      "modified": "2026-09-07",
+      "license": "이용허락범위 제한 없음(공공누리 유형 미표기)",
+      "fileFormat": "CSV(CP949)→UTF-8 변환",
+      "note": "위 파일의 일부 열과 값이 같아 교차 확인용"
+    }
+  ],
+  "unit": "건",
+  "collectedAt": "2026-11-02",
+  "origin": "공개데이터",
+  "series": [
+    {
+      "id": "messenger_phishing",
+      "name": "메신저피싱",
+      "column": "정보탈취연계형범죄_메신저피싱",
+      "period": "2024–2025",
+      "note": "2024년 분류체계 개편으로 신설되어 2024년부터 집계. 2023년 이전 값 0은 \"사건 없음\"이 아니라 집계 항목이 없었다는 뜻",
+      "points": [
+        {
+          "year": 2024,
+          "occurred": 317,
+          "arrested": 94
+        },
+        {
+          "year": 2025,
+          "occurred": 458,
+          "arrested": 120
+        }
+      ]
+    },
+    {
+      "id": "messenger_fraud_legacy",
+      "name": "메신저이용사기(구 분류)",
+      "column": "사이버금융범죄_메신저이용사기",
+      "period": "2019–2023",
+      "note": "2023년까지 사이버금융범죄 항목. 2024년 개편 이후 집계 없음(0). 신설된 메신저피싱과 같은 범위인지 확인되지 않아 하나의 추이로 잇지 않음",
+      "points": [
+        {
+          "year": 2019,
+          "occurred": 2756,
+          "arrested": 811
+        },
+        {
+          "year": 2020,
+          "occurred": 12402,
+          "arrested": 2873
+        },
+        {
+          "year": 2021,
+          "occurred": 16505,
+          "arrested": 3567
+        },
+        {
+          "year": 2022,
+          "occurred": 15856,
+          "arrested": 4003
+        },
+        {
+          "year": 2023,
+          "occurred": 13179,
+          "arrested": 2923
+        }
+      ]
+    },
+    {
+      "id": "smishing",
+      "name": "스미싱",
+      "column": "정보탈취연계형범죄_스미싱",
+      "period": "2018–2025",
+      "note": "2024년 개편 전후로 소속 중분류가 달라짐. 과거 연도 값이 새 분류 기준으로 다시 집계된 것인지는 출처 페이지에 명시 없음",
+      "points": [
+        {
+          "year": 2018,
+          "occurred": 293,
+          "arrested": 174
+        },
+        {
+          "year": 2019,
+          "occurred": 207,
+          "arrested": 32
+        },
+        {
+          "year": 2020,
+          "occurred": 822,
+          "arrested": 43
+        },
+        {
+          "year": 2021,
+          "occurred": 1336,
+          "arrested": 99
+        },
+        {
+          "year": 2022,
+          "occurred": 799,
+          "arrested": 89
+        },
+        {
+          "year": 2023,
+          "occurred": 1673,
+          "arrested": 161
+        },
+        {
+          "year": 2024,
+          "occurred": 4396,
+          "arrested": 512
+        },
+        {
+          "year": 2025,
+          "occurred": 2685,
+          "arrested": 505
+        }
+      ]
+    }
+  ]
+}

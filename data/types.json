@@ -1,0 +1,30 @@
+[
+  {
+    "typeId": "family",
+    "typeName": "가족·지인 사칭"
+  },
+  {
+    "typeId": "agency",
+    "typeName": "기관 사칭"
+  },
+  {
+    "typeId": "loan",
+    "typeName": "대출·지원금 사칭"
+  },
+  {
+    "typeId": "app",
+    "typeName": "악성 앱·링크 유도"
+  },
+  {
+    "typeId": "fakesite",
+    "typeName": "가짜 사이트·결제"
+  },
+  {
+    "typeId": "accomplice",
+    "typeName": "인출책·자금세탁 가담"
+  },
+  {
+    "typeId": "romance",
+    "typeName": "로맨스·협박"
+  }
+]

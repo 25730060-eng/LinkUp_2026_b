@@ -1,0 +1,128 @@
+{
+  "note": "유형 판별 키워드 초안. 점수 계산 방식은 다음 주 결정",
+  "rules": [
+    {
+      "typeId": "family",
+      "keywords": [
+        "엄마",
+        "아빠",
+        "폰 고장",
+        "액정 파손",
+        "급전",
+        "카드 도난",
+        "합의금",
+        "대신 결제",
+        "다른 계좌",
+        "지인 사칭",
+        "영상통화 회피"
+      ],
+      "source": "가족, 지인 사칭 「메신저피싱」 주의 당부",
+      "publisher": "방송통신위원회(공동: 금융위·경찰청·금감원)",
+      "sourceUrl": "https://www.kmcc.go.kr/user.do?boardId=1113&boardSeq=53103&dc=K00000200&mode=view&page=A05030000",
+      "sourceBasisDate": "2022-05-12",
+      "collectedAt": "2026-11-09",
+      "origin": "직접조사"
+    },
+    {
+      "typeId": "app",
+      "keywords": [
+        "링크 클릭",
+        "앱 설치",
+        "원격",
+        "부고",
+        "청첩장",
+        "세뱃돈",
+        "설선물",
+        "소비쿠폰",
+        "큐싱",
+        "QR코드",
+        "연말정산",
+        "미끼문자"
+      ],
+      "source": "스미싱·피싱 보호나라에 물어보세요!",
+      "publisher": "한국인터넷진흥원(KISA)",
+      "sourceUrl": "https://www.boho.or.kr/kr/bbs/view.do?searchCnd=1&bbsId=B0000127&searchWrd=&menuNo=205021&pageIndex=3&categoryCode=&nttId=71808",
+      "sourceBasisDate": "2025-07-14",
+      "collectedAt": "2026-11-09",
+      "origin": "직접조사"
+    },
+    {
+      "typeId": "fakesite",
+      "keywords": [
+        "본인 확인",
+        "인증번호 입력",
+        "주소 확인"
+      ],
+      "source": "피싱 KISA에 신고하세요",
+      "publisher": "한국인터넷진흥원(KISA)",
+      "sourceUrl": "https://www.boho.or.kr/kr/bbs/view.do?searchCnd=1&bbsId=B0000127&searchWrd=&menuNo=205021&pageIndex=3&categoryCode=&nttId=71822",
+      "sourceBasisDate": "2025-07-29",
+      "collectedAt": "2026-11-09",
+      "origin": "직접조사"
+    },
+    {
+      "typeId": "agency",
+      "keywords": [
+        "검찰",
+        "택배",
+        "무단주차",
+        "과태료",
+        "국제발신",
+        "사건조회",
+        "자산검수",
+        "자산이전",
+        "약식조사",
+        "보호관찰",
+        "특급보안",
+        "엠바고",
+        "안전계좌",
+        "마약 연루",
+        "셀프감금",
+        "범칙금",
+        "환급금"
+      ],
+      "source": "스미싱·피싱 보호나라에 물어보세요!",
+      "publisher": "한국인터넷진흥원(KISA)",
+      "sourceUrl": "https://www.boho.or.kr/kr/bbs/view.do?searchCnd=1&bbsId=B0000127&searchWrd=&menuNo=205021&pageIndex=3&categoryCode=&nttId=71808",
+      "sourceBasisDate": "2025-07-14",
+      "collectedAt": "2026-11-09",
+      "origin": "직접조사"
+    },
+    {
+      "typeId": "loan",
+      "keywords": [
+        "유출 보상",
+        "선입금",
+        "대환",
+        "기존 대출 상환",
+        "원격제어",
+        "맞춤형 대출"
+      ],
+      "source": "최근 금융권 개인정보 유출사고에 따른 보이스피싱·스미싱 등 피해에 주의하세요",
+      "publisher": "금융위원회",
+      "sourceUrl": "https://fsc.go.kr/no010101/87882",
+      "sourceBasisDate": "2026-10-06",
+      "collectedAt": "2026-11-09",
+      "origin": "직접조사"
+    },
+    {
+      "typeId": "romance",
+      "keywords": [
+        "랜덤채팅",
+        "화상채팅",
+        "영상 유포",
+        "apk",
+        "조건만남",
+        "선물 배송 링크",
+        "송금 부탁"
+      ],
+      "source": "전자금융범죄 유형별 피해 예방 요령",
+      "publisher": "법제처(찾기쉬운 생활법령정보)",
+      "sourceUrl": "https://www.easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=1592&ccfNo=4&cciNo=2&cnpClsNo=1",
+      "sourceBasisDate": "2026-10-15",
+      "collectedAt": "2026-11-09",
+      "origin": "직접조사",
+      "note": "생활법령정보는 법적 효력 있는 해석이 아님"
+    }
+  ]
+}

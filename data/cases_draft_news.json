@@ -1,0 +1,47 @@
+[
+  {
+    "id": 302,
+    "title": "캄보디아 거점 로맨스스캠 조직 검거",
+    "typeId": "romance",
+    "summary": "캄보디아에서 피해자 243명에게 약 108억원을 가로챈 로맨스스캠 조직의 한국인 총책 등 89명을 경찰이 검거하고 25명을 구속한 사건",
+    "riskSigns": [
+      "온라인에서 연인·친구처럼 접근",
+      "해외 거점 조직"
+    ],
+    "method": "기사에는 구체적 접근 방식이 없음",
+    "actions": [
+      "온라인으로만 알던 사람의 송금 요구는 거절",
+      "피해 시 112 신고"
+    ],
+    "source": "캄보디아 로맨스스캠 총책 등 89명 검거…의심계정 6만여개 차단",
+    "publisher": "연합뉴스(경찰청 발표 보도)",
+    "sourceUrl": null,
+    "secondarySourceUrl": "https://www.koreancenter.or.kr/news/articleView.html?idxno=1431427",
+    "sourceBasisDate": "2026-10-29",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사",
+    "note": "본문은 사용자가 붙여 준 연합뉴스 기사 텍스트 기준. 연합뉴스 원문 주소 확인 필요(secondary는 재게시 사이트로 제목 일치만 확인, 열어 보지 않음)"
+  },
+  {
+    "id": 303,
+    "title": "카드사·수사·금융당국 사칭 해외 보이스피싱 조직 검거",
+    "typeId": "agency",
+    "summary": "중국·태국·라오스 등에서 카드사와 수사·금융당국을 사칭해 피해자 68명에게 약 31억원을 가로챈 조직원 11명을 세종경찰청이 검거하고 7명을 구속한 사건",
+    "riskSigns": [
+      "카드사·수사기관·금융당국 사칭"
+    ],
+    "method": "기사에는 구체적 접근 방식이 없음",
+    "actions": [
+      "기관 전화는 끊고 공식 번호로 재확인",
+      "피해 시 지급정지 요청 후 112"
+    ],
+    "source": "캄보디아 로맨스스캠 총책 등 89명 검거…의심계정 6만여개 차단",
+    "publisher": "연합뉴스(경찰청 발표 보도)",
+    "sourceUrl": null,
+    "secondarySourceUrl": "https://www.koreancenter.or.kr/news/articleView.html?idxno=1431427",
+    "sourceBasisDate": "2026-10-29",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사",
+    "note": "본문은 사용자가 붙여 준 연합뉴스 기사 텍스트 기준. 연합뉴스 원문 주소 확인 필요(secondary는 재게시 사이트로 제목 일치만 확인, 열어 보지 않음)"
+  }
+]

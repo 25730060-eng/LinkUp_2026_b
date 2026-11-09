@@ -1,0 +1,333 @@
+[
+  {
+    "id": 1,
+    "typeId": "agency",
+    "sourceTitle": "경찰, 보이스피싱 등 다수피해 사기범죄 전국 일제 단속",
+    "title": "경찰, 보이스피싱 등 다수피해 사기범죄 전국 일제 단속",
+    "summary": "경찰이 2025년 9월~2026년 1월 보이스피싱·로맨스스캠·몸캠피싱 등 사기범죄를 집중 단속하고, 신고 보상금 상한을 높였다는 발표",
+    "tags": [
+      "단속",
+      "보상금"
+    ],
+    "source": "경찰, 보이스피싱 등 다수피해 사기범죄 전국 일제 단속",
+    "publisher": "경찰청",
+    "sourceUrl": "https://www.korea.kr/news/policyNewsView.do?newsId=148948470",
+    "sourceBasisDate": "2025-09-01",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 2,
+    "typeId": "agency",
+    "sourceTitle": "모르는 번호로 전화 '사건조회' 등 요구시 보이스피싱 의심",
+    "title": "모르는 번호로 전화 '사건조회' 등 요구시 보이스피싱 의심",
+    "summary": "2025년 1분기 발생 5,878건·피해 3,116억원, 피해자 절반 이상이 50대 이상. 사건조회·카드배송 등을 내세워 악성앱 설치 유도",
+    "tags": [
+      "기관사칭",
+      "악성앱",
+      "50대이상"
+    ],
+    "source": "모르는 번호로 전화 '사건조회' 등 요구시 보이스피싱 의심",
+    "publisher": "경찰청",
+    "sourceUrl": "https://www.korea.kr/news/policyNewsView.do?newsId=148942500",
+    "sourceBasisDate": "2025-04-28",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 3,
+    "typeId": "agency",
+    "sourceTitle": "기관사칭형 보이스피싱 60대 여성 노린다",
+    "title": "기관사칭형 보이스피싱 60대 여성 노린다",
+    "summary": "검찰·금감원 등을 사칭하는 기관사칭형이 60대 이상 여성을 주로 노리며, 악성앱으로 고립시킨 뒤 자산 검수를 요구하는 수법",
+    "tags": [
+      "기관사칭",
+      "60대"
+    ],
+    "source": "기관사칭형 보이스피싱 60대 여성 노린다",
+    "publisher": "경찰청",
+    "sourceUrl": "https://www.korea.kr/news/policyNewsView.do?newsId=148935404",
+    "sourceBasisDate": "2024-10-23",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 4,
+    "typeId": "app",
+    "sourceTitle": "올 들어 부고·청첩장 등 미끼문자 24만 건…출처 불분명한 링크 주의",
+    "title": "올 들어 부고·청첩장 등 미끼문자 24만 건…출처 불분명한 링크 주의",
+    "summary": "부고·청첩장·교통 범칙금 등을 가장한 미끼문자 링크로 악성앱이 설치되고, 감염된 폰이 지인에게 같은 문자를 퍼뜨려 2차 피해로 이어짐",
+    "tags": [
+      "스미싱",
+      "청첩장",
+      "부고"
+    ],
+    "source": "올 들어 부고·청첩장 등 미끼문자 24만 건…출처 불분명한 링크 주의",
+    "publisher": "과학기술정보통신부·경찰청·KISA",
+    "sourceUrl": "https://www.korea.kr/news/policyNewsView.do?newsId=148935097",
+    "sourceBasisDate": "2024-10-15",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 5,
+    "typeId": "accomplice",
+    "sourceTitle": "보이스피싱 등 사기범죄 특별자수·신고기간 운영",
+    "title": "보이스피싱 등 사기범죄 특별자수·신고기간 운영",
+    "summary": "2024년 9~10월 가담자 특별자수·신고기간. 수거책·송금책·인출책 등도 자수 대상이며 112로 가능",
+    "tags": [
+      "특별자수",
+      "인출책"
+    ],
+    "source": "보이스피싱 등 사기범죄 특별자수·신고기간 운영",
+    "publisher": "경찰청(관계부처 합동)",
+    "sourceUrl": "https://www.korea.kr/news/policyNewsView.do?newsId=148933685",
+    "sourceBasisDate": "2024-09-09",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 6,
+    "typeId": "app",
+    "sourceTitle": "\"세뱃돈 송금\" \"설선물 받으세요\" 문자 무심코 눌렀다간 낭패",
+    "title": "\"세뱃돈 송금\" \"설선물 받으세요\" 문자 무심코 눌렀다간 낭패",
+    "summary": "설 명절 전후 세뱃돈·선물 문자 스미싱과 QR코드 피싱(큐싱) 주의, 지인·공공기관 사칭 문자 비중 정리",
+    "tags": [
+      "스미싱",
+      "큐싱"
+    ],
+    "source": "\"세뱃돈 송금\" \"설선물 받으세요\" 문자 무심코 눌렀다간 낭패",
+    "publisher": "과기정통부·방통위·금융위",
+    "sourceUrl": "https://www.korea.kr/news/policyNewsView.do?newsId=148938770",
+    "sourceBasisDate": "2025-01-20",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 7,
+    "typeId": "all",
+    "sourceTitle": "국민의 일상을 위협하는 보이스피싱, 총력대응 계속",
+    "title": "국민의 일상을 위협하는 보이스피싱, 총력대응 계속",
+    "summary": "2025년 9월 대책 이후 보이스피싱 발생·피해가 줄고 있다는 정부 발표(2026-09-30 기준 수치 포함)",
+    "tags": [
+      "통계",
+      "정부대책"
+    ],
+    "source": "국민의 일상을 위협하는 보이스피싱, 총력대응 계속",
+    "publisher": "국무조정실",
+    "sourceUrl": "https://www.korea.kr/multi/visualNewsView.do?newsId=148972840",
+    "sourceBasisDate": "2026-09-30",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 8,
+    "typeId": "agency",
+    "sourceTitle": "관세청 사칭, 마약 밀수 사건 연루 협박 보이스피싱 증가",
+    "title": "관세청 사칭, 마약 밀수 사건 연루 협박 보이스피싱 증가",
+    "summary": "관세청·세관을 사칭해 마약 밀수 연루를 내세워 협박하고 가짜 사이트·악성앱을 쓰는 수법 증가",
+    "tags": [
+      "기관사칭",
+      "협박"
+    ],
+    "source": "관세청 사칭, 마약 밀수 사건 연루 협박 보이스피싱 증가",
+    "publisher": "관세청",
+    "sourceUrl": "https://www.korea.kr/multi/visualNewsView.do?newsId=148966893",
+    "sourceBasisDate": "2026-06-22",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 9,
+    "typeId": "all",
+    "sourceTitle": "보이스피싱 예방 스마트 안심 5계명",
+    "title": "보이스피싱 예방 스마트 안심 5계명",
+    "summary": "개인정보를 먼저 알려 주지 말고, 낯선 전화는 끊고 공식 번호로 재확인하라는 5계명 안내",
+    "tags": [
+      "예방수칙"
+    ],
+    "source": "보이스피싱 예방 스마트 안심 5계명",
+    "publisher": "개인정보보호위원회",
+    "sourceUrl": "https://www.korea.kr/multi/visualNewsView.do?newsId=148961176",
+    "sourceBasisDate": "2026-03-20",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 10,
+    "typeId": "all",
+    "sourceTitle": "'보이스피싱 근절 종합대책' 1년, 발생건수 40%·피해액 43% 감소 성과",
+    "title": "'보이스피싱 근절 종합대책' 1년, 발생건수 40%·피해액 43% 감소 성과",
+    "summary": "보이스피싱 근절 종합대책 시행 1년 성과(발생 40%·피해액 43% 감소) 발표. 본문 요약은 페이지에서 확인 불가(첨부파일 필요). 같은 날 국무조정실 TF 회의 자료(156778930)와 내용이 같음",
+    "tags": [
+      "통계",
+      "정부대책"
+    ],
+    "source": "'보이스피싱 근절 종합대책' 1년, 발생건수 40%·피해액 43% 감소 성과",
+    "publisher": "개인정보보호위원회",
+    "sourceUrl": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156778921",
+    "sourceBasisDate": "2026-09-02",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 11,
+    "typeId": "agency",
+    "sourceTitle": "공무원 사칭 무전기 대리구매 신종 피싱 경고",
+    "title": "공무원 사칭 무전기 대리구매 신종 피싱 경고",
+    "summary": "지자체 공무원을 사칭해 물건 대리구매를 유도하는 신종 피싱을 금융위가 경고. 본문은 페이지에서 확인 불가(첨부파일 필요)",
+    "tags": [
+      "신종수법",
+      "기관사칭"
+    ],
+    "source": "공무원 사칭 무전기 대리구매 신종 피싱 경고",
+    "publisher": "금융위원회",
+    "sourceUrl": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156773951",
+    "sourceBasisDate": "2026-08-10",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 12,
+    "typeId": "fakesite",
+    "sourceTitle": "방송미디어통신위원회를 사칭한 사기메일에 주의하세요",
+    "title": "방송미디어통신위원회를 사칭한 사기메일에 주의하세요",
+    "summary": "방송미디어통신위원회를 사칭해 유튜버에게 보내는 피싱 메일. 발신 주소가 공식(@korea.kr)이 아닌 점으로 구별",
+    "tags": [
+      "메일피싱",
+      "기관사칭"
+    ],
+    "source": "방송미디어통신위원회를 사칭한 사기메일에 주의하세요",
+    "publisher": "방송미디어통신위원회",
+    "sourceUrl": "https://www.korea.kr/multi/visualNewsView.do?newsId=148975280",
+    "sourceBasisDate": "2026-11-09",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 13,
+    "typeId": "app",
+    "sourceTitle": "정부, 추석명절 보이스피싱 등 사이버사기 대응 요령 안내",
+    "title": "정부, 추석명절 보이스피싱 등 사이버사기 대응 요령 안내",
+    "summary": "추석 전후 범칙금·부고·청첩장·선물 쇼핑몰 사칭 문자와 대응 요령 정리",
+    "tags": [
+      "스미싱",
+      "명절"
+    ],
+    "source": "정부, 추석명절 보이스피싱 등 사이버사기 대응 요령 안내",
+    "publisher": "금융위원회 등 6개 기관",
+    "sourceUrl": "https://fsc.go.kr/no010101/83034",
+    "sourceBasisDate": "2024-09-09",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 14,
+    "typeId": "app",
+    "sourceTitle": "설 명절을 겨냥한 문자사기(스미싱) 등 사이버사기 주의!",
+    "title": "설 명절을 겨냥한 문자사기(스미싱) 등 사이버사기 주의!",
+    "summary": "설 명절 전후 연말정산·택배·선물 사칭 스미싱과 큐싱, 허위 쇼핑몰 주의 안내",
+    "tags": [
+      "스미싱",
+      "명절"
+    ],
+    "source": "설 명절을 겨냥한 문자사기(스미싱) 등 사이버사기 주의!",
+    "publisher": "금융위원회 등 6개 기관",
+    "sourceUrl": "https://fsc.go.kr/no010101/83889",
+    "sourceBasisDate": "2025-01-20",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 15,
+    "typeId": "loan",
+    "sourceTitle": "최근 금융권 개인정보 유출사고에 따른 보이스피싱·스미싱 등 피해에 주의하세요",
+    "title": "최근 금융권 개인정보 유출사고에 따른 보이스피싱·스미싱 등 피해에 주의하세요",
+    "summary": "금융권 개인정보 유출 사고를 이용한 대출 빙자·기관 사칭 2차 사기 주의(소비자경보 '주의' 등급)",
+    "tags": [
+      "대출사기",
+      "개인정보유출"
+    ],
+    "source": "최근 금융권 개인정보 유출사고에 따른 보이스피싱·스미싱 등 피해에 주의하세요",
+    "publisher": "금융위원회",
+    "sourceUrl": "https://fsc.go.kr/no010101/87882",
+    "sourceBasisDate": "2026-10-06",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 16,
+    "typeId": "app",
+    "sourceTitle": "민생회복 소비쿠폰 스미싱 주의 포스터",
+    "title": "민생회복 소비쿠폰 스미싱 주의 포스터",
+    "summary": "소비쿠폰 지급을 사칭한 링크 문자 스미싱 주의 포스터(같은 포스터 PDF를 사용자가 첨부함)",
+    "tags": [
+      "스미싱",
+      "소비쿠폰"
+    ],
+    "source": "민생회복 소비쿠폰 스미싱 주의 포스터",
+    "publisher": "금융감독원",
+    "sourceUrl": "https://www.fss.or.kr/fss/bbs/B0000062/view.do?nttId=197344&menuNo=200658",
+    "sourceBasisDate": "2025-08-14",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사"
+  },
+  {
+    "id": 17,
+    "typeId": "accomplice",
+    "sourceTitle": "(한겨레 기사 제목 확인 필요)",
+    "title": "사무보조 알바로 속여 수거책·통장양도를 유도하는 수법, 금감원이 청년·외국인 대상 홍보",
+    "summary": "보이스피싱 조직이 사무보조 등 평범한 알바로 가장해 청년을 현금 수거책으로 쓰거나 대가를 주며 통장 양도를 유도하고, 국내 거주 외국인은 통장 매매·개인 간 외화거래로 자금세탁에 연루되는 사례가 있어 금감원이 대학 캠퍼스·은행 영업점 등에서 맞춤형 홍보에 나섬",
+    "tags": [
+      "인출책",
+      "통장양도",
+      "알바사칭"
+    ],
+    "source": "금융감독원, 청년 구직자·국내 거주 외국인 대상 보이스피싱 연루 예방 홍보(한겨레 보도)",
+    "publisher": "한겨레(금융감독원 발표 보도)",
+    "sourceUrl": null,
+    "sourceBasisDate": "2026-10-26",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사",
+    "note": "본문은 사용자가 붙여 준 한겨레 기사 텍스트 기준. 기사 개별 주소는 확인 필요. 퀴즈 이벤트는 2026-11-08 종료"
+  },
+  {
+    "id": 18,
+    "typeId": "romance",
+    "sourceTitle": "캄보디아 로맨스스캠 총책 등 89명 검거…의심계정 6만여개 차단",
+    "title": "캄보디아 로맨스스캠 총책 등 89명 검거…의심계정 6만여개 차단",
+    "summary": "경찰청이 피싱 검거·예방 우수사례 15건에 포상금을 지급하기로 했고, 캄보디아 로맨스스캠 조직 총책 등 89명 검거, 메신저사와 협력한 의심계정·대화방 차단, 2026년 1~9월 보이스피싱 감소 수치를 함께 밝힘",
+    "tags": [
+      "로맨스스캠",
+      "검거",
+      "통계"
+    ],
+    "source": "캄보디아 로맨스스캠 총책 등 89명 검거…의심계정 6만여개 차단",
+    "publisher": "연합뉴스(경찰청 발표 보도)",
+    "sourceUrl": null,
+    "secondarySourceUrl": "https://www.koreancenter.or.kr/news/articleView.html?idxno=1431427",
+    "sourceBasisDate": "2026-10-29",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사",
+    "note": "본문은 사용자가 붙여 준 연합뉴스 기사 텍스트 기준. 연합뉴스 원문 주소 확인 필요(secondary는 재게시 사이트로 제목 일치만 확인, 열어 보지 않음)"
+  },
+  {
+    "id": 19,
+    "typeId": "all",
+    "sourceTitle": "보이스피싱 심리적 피해도 심각…금감원, 금융권과 피해자 지원",
+    "title": "보이스피싱 심리적 피해도 심각…금감원, 금융권과 피해자 지원",
+    "summary": "금감원이 은행연합회·여신금융협회·저축은행중앙회·굿네이버스와 협약해 보이스피싱 피해자 생계비·심리상담 지원 시범사업(2026.11~2027.10)을 시작하고, 피해자를 장기간 고립시키는 '셀프감금' 같은 수법이 늘고 있다고 설명함",
+    "tags": [
+      "피해자지원",
+      "셀프감금",
+      "통계"
+    ],
+    "source": "보이스피싱 심리적 피해도 심각…금감원, 금융권과 피해자 지원",
+    "publisher": "연합뉴스(금융감독원 발표 보도, 재게시 페이지 기준)",
+    "sourceUrl": "https://www.koreancenter.or.kr/news/articleView.html?idxno=1436782",
+    "sourceBasisDate": "2026-11-09",
+    "collectedAt": "2026-11-09",
+    "origin": "직접조사",
+    "note": "연합뉴스 기사 재게시 페이지(사용자가 열어 본 주소). 본문은 사용자가 붙여 준 텍스트 기준. 연합뉴스 원문 주소 확인 필요"
+  }
+]
