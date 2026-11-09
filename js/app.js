@@ -85,11 +85,23 @@
     if (!open) return;
     detailOrigin = currentName() === 'saved' ? 'saved' : 'cases';   // 뒤로가기 때 돌아갈 화면
     document.getElementById('case-detail').dataset.id = open.dataset.id;
+
+    // 출처 링크: 누른 카드의 data-source-url을 사용. 없으면 버튼 대신 안내 문구 (href="#"로 같은 페이지가 열리는 문제 방지)
+    var card = open.closest('.case-card');
+    var url = card ? (card.dataset.sourceUrl || '') : '';
+    var link = document.getElementById('source-link');
+    var none = document.getElementById('source-none');
+    if (/^https:\/\//.test(url)) { link.href = url; link.hidden = false; none.hidden = true; }
+    else { link.removeAttribute('href'); link.hidden = true; none.hidden = false; }
+    var srcEl = card && card.querySelector('.case-source');
+    var dateEl = card && card.querySelector('.case-date');
+    if (srcEl) document.getElementById('case-source').textContent = srcEl.textContent;
+    if (dateEl) document.getElementById('case-date').textContent = dateEl.textContent;
     go('detail');
   });
 
 
-  // ----- 유형 필터 (사례 목록·저장함 공통) -----
+  // ----- 유형 필터 (사례 목록·마이페이지 공통) -----
   // 칩(data-type)을 누르면 카드(data-type)를 거르고, 건수와 '결과 없음' 영역을 갱신
   function setupTypeFilter(cfg) {
     var screen = document.getElementById(cfg.screenId);
