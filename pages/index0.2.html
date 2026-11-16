@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>카톡 사칭 문구 진단</title>
+<style>
+/* 모바일 세로 375px 기준. 본문 16px 이상, 버튼 44px 이상. 색은 로우파이(흑백) */
+:root{--ink:#111;--line:#111;--soft:#eee;--mid:#ccc;--tab-h:56px;--bar-h:76px;--hdr-h:56px}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;overflow-wrap:anywhere}
+[hidden]{display:none !important}
+h1,h2,h3,p,ul{margin:0}
+ul{padding:0;list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+#app{max-width:480px;min-height:100vh;margin:0 auto;position:relative;border-inline:1px solid var(--mid)}
+.screen{min-height:100vh}
+.screen-body{padding:16px 16px calc(var(--tab-h) + 24px);display:flex;flex-direction:column;gap:14px}
+.screen-body.has-bottom-bar{padding-bottom:calc(var(--bar-h) + 24px)}
+
+/* 헤더 */
+.app-header{display:flex;align-items:center;gap:10px;min-height:var(--hdr-h);padding:6px 16px;border-bottom:2px solid var(--line);background:#fff}
+.app-title{font-size:20px;line-height:1.3;font-weight:700;min-width:0}
+.logo{flex:none;width:40px;height:40px}
+.btn-icon{flex:none;width:44px;height:44px;border:1.5px solid var(--line);background:var(--soft);font-size:20px;font-weight:700;cursor:pointer}
+
+/* 글 요소 */
+.section-title{font-size:18px;font-weight:700;line-height:1.35}
+.detail-heading{font-size:22px;line-height:1.35}
+.label{font-size:16px;font-weight:700}
+.help,.privacy-note,.notice-small,.state-desc,.case-meta{font-size:16px;color:#333}
+.notice{border:1.5px dashed var(--line);padding:10px 12px;font-weight:700}
+.field-error{font-weight:700}
+.result-type{font-size:22px;font-weight:700;line-height:1.35}
+.result-text{border:1.5px solid var(--line);padding:12px;line-height:1.7}
+mark{background:#cfcfcf;text-decoration:underline;font-weight:700;color:inherit}
+.check-list,.plain-list{display:flex;flex-direction:column;gap:8px}
+.check-list li{border:1.5px solid var(--line);padding:10px 12px}
+.plain-list li{padding-left:1.1em;position:relative}
+.plain-list li::before{content:"•";position:absolute;left:0}
+
+#case-detail{display:flex;flex-direction:column;gap:10px}
+#case-detail .section-title{margin-top:8px}
+.btn{color:var(--ink)}
+.btn-primary{color:#fff}
+/* 입력·버튼 */
+.input-area{width:100%;min-height:190px;border:1.5px solid var(--line);padding:12px;resize:vertical;border-radius:0}
+.input-line,.select{width:100%;min-height:48px;border:1.5px solid var(--line);padding:0 12px;border-radius:0;background:#fff}
+.btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:6px 14px;border:1.5px solid var(--line);background:var(--soft);font-weight:700;text-align:center;text-decoration:none;cursor:pointer;border-radius:0}
+.btn-lg{min-height:60px;font-size:20px}
+.btn-wide{width:100%}
+.btn:disabled{background:var(--mid);color:#555;border-style:dashed;cursor:not-allowed}
+.btn-text{min-height:44px;padding:0 8px;border:0;background:none;font-weight:700;text-decoration:underline;cursor:pointer;margin-left:auto}
+.btn-row,.hotline-links{display:flex;gap:8px;flex-wrap:wrap}
+.btn-row>.btn,.hotline-links>.btn{flex:1 1 140px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+
+/* 긴급 신고 */
+.hotline{margin-top:6px;border:1.5px solid var(--line);background:var(--soft);padding:12px;display:flex;flex-direction:column;gap:10px}
+.hotline-title{font-size:18px}
+
+/* 상태 박스 */
+.state-box{border:1.5px dashed var(--line);background:var(--soft);padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.state-title{font-weight:700;font-size:18px}
+.skeleton{width:100%;height:84px;background:var(--mid)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--bar-h) + 12px);width:min(448px,calc(100% - 32px));background:var(--ink);color:#fff;padding:12px 14px;font-weight:700;z-index:30}
+
+/* 사례 목록 */
+.condition-summary{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:6px;min-height:48px;padding:0 16px;background:var(--soft);border-bottom:1.5px solid var(--line);font-weight:700}
+.filters{display:flex;flex-direction:column;gap:10px}
+.chips,.more-filters{display:flex;gap:6px;flex-wrap:wrap}
+.chip{min-height:44px;padding:0 10px;white-space:nowrap;border:1.5px solid var(--line);background:#fff;font-weight:700;cursor:pointer;border-radius:22px}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+.chip-more{border-style:dashed}
+.sort-row{display:flex;align-items:center;gap:10px}
+.sort-row label{flex:none;font-weight:700}
+.card-list{display:flex;flex-direction:column;gap:12px}
+.case-card{border:1.5px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:6px}
+.case-type{align-self:flex-start;border:1.5px solid var(--line);padding:0 8px;font-weight:700;font-size:16px}
+.case-title{font-size:18px;line-height:1.4}
+.case-actions{display:flex;gap:8px;margin-top:6px}
+.case-actions .btn{flex:1 1 0;min-height:44px}
+.btn-save-card[aria-pressed="true"],.btn-save-case[aria-pressed="true"]{background:var(--ink);color:#fff}
+#btn-save-result[aria-pressed="true"],#btn-save-case[aria-pressed="true"]{background:#fff;color:var(--ink)}
+
+/* 저장함 */
+.saved-tabs{display:flex}
+.saved-tab{flex:1 1 0;min-height:48px;border:1.5px solid var(--line);background:#fff;font-weight:700;cursor:pointer}
+.saved-tab+.saved-tab{border-left:0}
+.saved-tab[aria-selected="true"]{background:var(--ink);color:#fff}
+dialog{width:min(340px,calc(100% - 32px));border:2px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:14px}
+dialog[open]{display:flex}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+
+/* 하단 고정: 저장 바(2단계) / 탭바(1단계) */
+.bottom-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(480px,100%);padding:8px 16px;background:#fff;border-top:2px solid var(--line);z-index:20;min-height:var(--bar-h)}
+.bottom-bar .btn{width:100%}
+.tabbar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(480px,100%);display:flex;background:#fff;border-top:2px solid var(--line);z-index:20}
+.tab{flex:1 1 0;min-height:var(--tab-h);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;color:var(--ink);text-decoration:none;border-right:1px solid var(--line)}
+.tab:last-child{border-right:0}
+.tab[aria-current="page"]{background:var(--ink);color:#fff}
+/* 2단계 화면이 보이면 탭바를 숨김 (JS 없이도 동작) */
+#app:has(#screen-result:not([hidden])) #tabbar,
+#app:has(#screen-detail:not([hidden])) #tabbar{display:none}
+
+@media (max-width:359px){
+  .app-title{font-size:18px}
+  .btn-lg{font-size:18px}
+  .tab{font-size:16px}
+}
+
+.btn-primary,.btn-primary:disabled{--x:0}
+.btn.btn-primary{background:var(--ink);color:#fff}
+.btn.btn-primary:disabled{background:var(--mid);color:#555}
+
+#result-found{display:flex;flex-direction:column;gap:12px}
+
+</style>
+</head>
+<body>
+<!-- 규칙: id = JS가 한 번만 찾는 요소 / class = 반복 요소 / data-field = JSON 필드명(camelCase) 그대로 -->
+<div id="app">
+
+  <!-- ===== 1. 홈 (1단계 탭 화면) ===== -->
+  <section id="screen-home" class="screen" data-screen="home" aria-labelledby="service-name">
+    <header class="app-header">
+      <img id="logo" class="logo" alt="" width="40" height="40" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='none' stroke='%23111' stroke-width='2'/%3E%3Cpath d='M0 40L40 0' stroke='%23111' stroke-width='2'/%3E%3C/svg%3E">
+      <h1 id="service-name" class="app-title">카톡 사칭 문구 진단</h1>
+    </header>
+
+    <main class="screen-body">
+      <!-- 상태 영역: 오류 (기본 숨김) -->
+      <div id="state-home-error" class="state-box" role="alert" hidden>
+        <p class="state-title">사례 데이터를 불러오지 못했습니다</p>
+        <p class="state-desc">문구 확인은 계속 사용할 수 있습니다</p>
+        <button id="btn-home-retry" type="button" class="btn">다시 시도</button>
+      </div>
+
+      <h2 class="section-title">받은 메시지를 붙여넣으세요</h2>
+      <label for="input-text" class="visually-hidden">의심되는 메시지 입력</label>
+      <textarea id="input-text" class="input-area" rows="7" placeholder="여기에 의심되는 메시지를 붙여넣기" aria-describedby="paste-help"></textarea>
+      <p id="paste-help" class="help">붙여넣는 방법: 입력 칸을 길게 눌러 '붙여넣기'를 선택하세요</p>
+      <button id="btn-check" type="button" class="btn btn-primary btn-lg" disabled>유형 확인하기</button>
+      <p id="input-error" class="field-error" role="alert" hidden>문구를 먼저 입력해 주세요</p>
+      <p class="privacy-note">입력한 문구 원문은 저장하지 않습니다</p>
+
+      <section id="hotline" class="hotline" aria-label="긴급 신고처">
+        <h2 class="hotline-title">긴급 신고</h2>
+        <div class="hotline-links">
+          <a class="btn" href="tel:112">경찰청 112</a>
+          <a class="btn" href="tel:1332">금융감독원 1332</a>
+        </div>
+        <p class="notice-small">카카오와 무관한 서비스입니다</p>
+      </section>
+    </main>
+  </section>
+
+  <!-- ===== 2. 확인 결과 (2단계 화면) ===== -->
+  <section id="screen-result" class="screen" data-screen="result" aria-labelledby="result-title" hidden>
+    <header class="app-header">
+      <button id="btn-back" type="button" class="btn-icon" aria-label="뒤로">←</button>
+      <h1 id="result-title" class="app-title">확인 결과</h1>
+    </header>
+
+    <main class="screen-body has-bottom-bar">
+      <div id="result-found">
+        <p class="label">비슷한 유형</p>
+        <p id="result-type" class="result-type" data-type-id="">가족 사칭 + 금융정보 요구</p>
+        <p id="result-notice" class="notice">확정 판단이 아닙니다. 참고용 안내입니다.</p>
+
+        <h2 class="section-title">입력한 문구</h2>
+        <p id="result-text" class="result-text">엄마 폰 고장 나서 <mark>급하게</mark> <mark>카드 정보</mark> 좀 보내줘</p>
+
+        <h2 class="section-title">지금 해야 할 일</h2>
+        <ul id="result-actions" class="check-list">
+          <li>메시지 속 링크·번호는 누르지 마세요</li>
+          <li>가족에게 직접 전화로 확인하세요</li>
+          <li>카드·신분증 정보는 보내지 마세요</li>
+        </ul>
+
+        <div class="hotline-links">
+          <a id="call-112" class="btn" href="tel:112">경찰청 112</a>
+          <a id="call-1332" class="btn" href="tel:1332">금융감독원 1332</a>
+        </div>
+
+        <a id="btn-similar" class="btn btn-wide" href="#cases"><span>비슷한 사례 <span id="similar-count">7</span>건 보기</span></a>
+      </div>
+
+      <!-- 상태 영역: 유형 없음 (기본 숨김) -->
+      <div id="result-none" class="state-box" hidden>
+        <p class="state-title">비슷한 유형을 찾지 못했습니다</p>
+        <p class="state-desc">그래도 의심되면 아래 번호로 문의하세요</p>
+      </div>
+    </main>
+
+    <div class="bottom-bar">
+      <button id="btn-save-result" type="button" class="btn btn-primary btn-lg" aria-pressed="false">이 결과 저장</button>
+    </div>
+  </section>
+
+  <!-- ===== 3. 사례 목록 (1단계 탭 화면) ===== -->
+  <section id="screen-cases" class="screen" data-screen="cases" aria-labelledby="cases-title" hidden>
+    <header class="app-header">
+      <h1 id="cases-title" class="app-title">비슷한 사례</h1>
+    </header>
+
+    <!-- 고정 영역 1: 조건 요약 (sticky) -->
+    <div id="condition-summary" class="condition-summary" aria-live="polite">
+      <span id="condition-text">가족 사칭</span>
+      <span class="dot">·</span>
+      <span><span id="result-count">3</span>건</span>
+      <button id="btn-clear" type="button" class="btn-text">전체 해제</button>
+    </div>
+
+    <main class="screen-body">
+      <div class="filters">
+        <label for="query" class="visually-hidden">제목·요약 검색</label>
+        <input id="query" class="input-line" type="search" placeholder="제목·요약 검색">
+
+        <div id="type-filters" class="chips" role="group" aria-label="유형 필터">
+          <button type="button" class="chip" data-type="" aria-pressed="false">전체</button>
+          <button type="button" class="chip" data-type="family" aria-pressed="true">가족 사칭</button>
+          <button type="button" class="chip" data-type="agency" aria-pressed="false">기관 사칭</button>
+          <button id="btn-more" type="button" class="chip chip-more" aria-expanded="false" aria-controls="more-filters">더보기</button>
+        </div>
+        <div id="more-filters" class="more-filters" hidden>
+          <button type="button" class="chip" data-type="loan" aria-pressed="false">대출 사칭</button>
+          <button type="button" class="chip" data-type="shipping" aria-pressed="false">택배 사칭</button>
+        </div>
+
+        <div class="sort-row">
+          <label for="sort">정렬</label>
+          <select id="sort" class="select">
+            <option value="latest">최신순 (수집일 기준)</option>
+            <option value="type">유형순</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 상태 영역 (기본 숨김, 한 번에 하나만 표시) -->
+      <div id="state-loading" class="state-box" role="status" hidden>
+        <p class="state-title">사례를 불러오는 중입니다</p>
+        <div class="skeleton"></div><div class="skeleton"></div>
+      </div>
+      <div id="state-empty" class="state-box" hidden>
+        <p class="state-title">조건에 맞는 사례가 없습니다</p>
+        <p class="state-desc">검색어나 유형을 바꿔 보세요</p>
+        <div class="btn-row">
+          <button id="btn-reset" type="button" class="btn">조건 초기화</button>
+          <button id="btn-all" type="button" class="btn">전체 사례 보기</button>
+        </div>
+      </div>
+      <div id="state-cases-error" class="state-box" role="alert" hidden>
+        <p class="state-title">사례 데이터를 불러오지 못했습니다</p>
+        <button id="btn-retry" type="button" class="btn">다시 시도</button>
+      </div>
+
+      <!-- 카드 목록: 손으로 작성한 3건. JS는 template#case-card-tpl 로 같은 구조를 복제 -->
+      <ul id="case-list" class="card-list">
+        <li class="case-card" data-id="1">
+          <p class="case-type" data-field="type">가족 사칭</p>
+          <h3 class="case-title" data-field="title">자녀 사칭 메시지로 카드 정보 요구</h3>
+          <p class="case-meta"><span class="case-source" data-field="source">금융감독원</span> · <time class="case-date" data-field="collectedAt" datetime="2026-09-28">2026-09-28</time></p>
+          <div class="case-actions">
+            <button type="button" class="btn btn-open" data-id="1">자세히 보기</button>
+            <button type="button" class="btn btn-save-card" data-id="1" aria-pressed="false">저장</button>
+          </div>
+        </li>
+        <li class="case-card" data-id="2">
+          <p class="case-type" data-field="type">가족 사칭</p>
+          <h3 class="case-title" data-field="title">손주 사칭 급전 송금 요구</h3>
+          <p class="case-meta"><span class="case-source" data-field="source">경찰청</span> · <time class="case-date" data-field="collectedAt" datetime="2026-09-15">2026-09-15</time></p>
+          <div class="case-actions">
+            <button type="button" class="btn btn-open" data-id="2">자세히 보기</button>
+            <button type="button" class="btn btn-save-card" data-id="2" aria-pressed="true">저장됨</button>
+          </div>
+        </li>
+        <li class="case-card" data-id="3">
+          <p class="case-type" data-field="type">가족 사칭</p>
+          <h3 class="case-title" data-field="title">휴대폰 고장을 핑계로 상품권 구매 요구</h3>
+          <p class="case-meta"><span class="case-source" data-field="source">한국소비자원</span> · <time class="case-date" data-field="collectedAt" datetime="2026-08-30">2026-08-30</time></p>
+          <div class="case-actions">
+            <button type="button" class="btn btn-open" data-id="3">자세히 보기</button>
+            <button type="button" class="btn btn-save-card" data-id="3" aria-pressed="false">저장</button>
+          </div>
+        </li>
+      </ul>
+      <template id="case-card-tpl">
+        <li class="case-card" data-id="">
+          <p class="case-type" data-field="type"></p>
+          <h3 class="case-title" data-field="title"></h3>
+          <p class="case-meta"><span class="case-source" data-field="source"></span> · <time class="case-date" data-field="collectedAt"></time></p>
+          <div class="case-actions">
+            <button type="button" class="btn btn-open" data-id="">자세히 보기</button>
+            <button type="button" class="btn btn-save-card" data-id="" aria-pressed="false">저장</button>
+          </div>
+        </li>
+      </template>
+    </main>
+  </section>
+
+  <!-- ===== 4. 사례 상세 (2단계 화면, 기본 숨김) ===== -->
+  <section id="screen-detail" class="screen" data-screen="detail" aria-labelledby="detail-title" hidden>
+    <header class="app-header">
+      <button id="btn-detail-back" type="button" class="btn-icon" aria-label="뒤로">←</button>
+      <h1 id="detail-title" class="app-title">사례 상세</h1>
+    </header>
+
+    <main class="screen-body has-bottom-bar">
+      <article id="case-detail" data-id="">
+        <p id="case-type" class="case-type" data-field="type">가족 사칭</p>
+        <h2 id="case-title" class="detail-heading" data-field="title">자녀 사칭 카드 정보 요구 사례</h2>
+
+        <h3 class="section-title">수법 요약</h3>
+        <p id="case-summary" data-field="summary">자녀를 사칭해 휴대폰 고장을 핑계로 카드 정보를 요구합니다.</p>
+
+        <h3 class="section-title">위험 신호</h3>
+        <ul id="case-risks" class="plain-list" data-field="riskSigns">
+          <li>평소와 다른 말투</li>
+          <li>급하게 재촉</li>
+          <li>카드·신분증 정보 요구</li>
+        </ul>
+
+        <h3 class="section-title">수법 설명</h3>
+        <p id="case-method" data-field="method">먼저 휴대폰 고장을 알린 뒤 원격 앱 설치나 카드 정보 전달을 유도합니다.</p>
+
+        <h3 class="section-title">대응 행동</h3>
+        <ul id="case-actions" class="plain-list" data-field="actions">
+          <li>직접 전화로 확인하기</li>
+          <li>112·1332 문의하기</li>
+        </ul>
+
+        <h3 class="section-title">출처</h3>
+        <p class="case-meta"><span id="case-source" data-field="source">금융감독원</span> · <time id="case-date" data-field="collectedAt" datetime="2026-09-28">2026-09-28</time></p>
+        <a id="source-link" class="btn btn-wide" data-field="sourceUrl" href="#" target="_blank" rel="noopener noreferrer">출처 링크 열기 (새 탭)</a>
+      </article>
+
+      <div id="toast" class="toast" role="status" hidden>'자녀 사칭 카드 정보 요구' 사례를 저장했습니다</div>
+    </main>
+
+    <!-- 고정 영역: 저장 바 -->
+    <div class="bottom-bar">
+      <button id="btn-save-case" type="button" class="btn btn-primary btn-lg" aria-pressed="false">저장</button>
+    </div>
+  </section>
+
+  <!-- ===== 5. 저장함 (1단계 탭 화면) ===== -->
+  <section id="screen-saved" class="screen" data-screen="saved" aria-labelledby="saved-title" hidden>
+    <header class="app-header">
+      <h1 id="saved-title" class="app-title">저장함</h1>
+    </header>
+
+    <main class="screen-body">
+      <div id="saved-tabs" class="saved-tabs" role="tablist" aria-label="저장 종류">
+        <button type="button" id="tab-cases" class="saved-tab" role="tab" data-tab="cases" aria-selected="true" aria-controls="saved-case-list">사례 <span class="count">2</span></button>
+        <button type="button" id="tab-results" class="saved-tab" role="tab" data-tab="results" aria-selected="false" aria-controls="saved-result-list">확인 결과 <span class="count">1</span></button>
+      </div>
+
+      <ul id="saved-case-list" class="card-list" role="tabpanel" aria-labelledby="tab-cases">
+        <li class="case-card" data-id="1">
+          <p class="case-type" data-field="type">가족 사칭</p>
+          <h3 class="case-title" data-field="title">자녀 사칭 메시지로 카드 정보 요구</h3>
+          <p class="case-meta"><span class="case-source" data-field="source">금융감독원</span> · <time class="case-date" data-field="collectedAt" datetime="2026-09-28">2026-09-28</time></p>
+          <div class="case-actions">
+            <button type="button" class="btn btn-open" data-id="1">열기</button>
+            <button type="button" class="btn btn-delete" data-id="1">삭제</button>
+          </div>
+        </li>
+      </ul>
+      <ul id="saved-result-list" class="card-list" role="tabpanel" aria-labelledby="tab-results" hidden>
+        <li class="case-card" data-type-id="family-finance">
+          <p class="case-type">가족 사칭 + 금융정보 요구</p>
+          <p class="case-meta"><time data-field="savedAt" datetime="2026-10-10">2026-10-10 저장</time></p>
+          <div class="case-actions">
+            <button type="button" class="btn btn-open" data-id="family-finance">열기</button>
+            <button type="button" class="btn btn-delete" data-id="family-finance">삭제</button>
+          </div>
+        </li>
+      </ul>
+
+      <div id="state-saved-empty" class="state-box" hidden>
+        <p class="state-title">아직 저장한 항목이 없습니다</p>
+        <p class="state-desc">사례나 확인 결과를 저장하면 여기에 모입니다</p>
+      </div>
+    </main>
+
+    <dialog id="confirm-delete" aria-labelledby="confirm-title">
+      <p id="confirm-title" class="state-title">이 항목을 삭제할까요?</p>
+      <div class="btn-row">
+        <button id="btn-cancel" type="button" class="btn" autofocus>취소</button>
+        <button id="btn-confirm" type="button" class="btn btn-primary">삭제</button>
+      </div>
+    </dialog>
+  </section>
+
+  <!-- ===== 공통 하단 탭바: 1단계 화면(홈·사례·저장함)에서만 표시 ===== -->
+  <nav id="tabbar" class="tabbar" aria-label="주 메뉴">
+    <a class="tab" data-tab="home" href="#home" aria-current="page">홈</a>
+    <a class="tab" data-tab="cases" href="#cases">사례</a>
+    <a class="tab" data-tab="saved" href="#saved">저장함</a>
+  </nav>
+</div>
+<script>
+'use strict';
+
+// 화면 전환만 담당합니다. 유형 판별·JSON·저장은 이후 단계에서 추가합니다.
+// 방식: 단일 HTML, 해시(#home 등)로 화면 하나만 hidden 해제 → 브라우저 뒤로가기도 동작
+(function () {
+  var SCREENS = ['home', 'result', 'cases', 'detail', 'saved'];
+  var TAB_SCREENS = ['home', 'cases', 'saved'];       // 1단계: 탭바 표시
+  var PARENT = { result: 'home', detail: 'cases' };     // 2단계: 뒤로가기 대상
+
+  var tabs = document.querySelectorAll('#tabbar .tab');
+  var input = document.getElementById('input-text');
+  var btnCheck = document.getElementById('btn-check');
+  var inputError = document.getElementById('input-error');
+  var resultText = document.getElementById('result-text');
+
+  function currentName() {
+    var name = location.hash.replace('#', '');
+    return SCREENS.indexOf(name) === -1 ? 'home' : name;
+  }
+
+  function show(name) {
+    // 입력 없이 확인 결과로 직접 들어오면 홈으로 되돌림 (원문은 저장하지 않으므로 새로고침 시 사라짐)
+    if (name === 'result' && !input.value.trim()) name = 'home';
+
+    SCREENS.forEach(function (s) {
+      document.getElementById('screen-' + s).hidden = (s !== name);
+    });
+
+    // 탭 강조는 1단계 화면에서만, 2단계는 부모 탭 기준
+    var tabName = TAB_SCREENS.indexOf(name) !== -1 ? name : PARENT[name];
+    tabs.forEach(function (a) {
+      if (a.dataset.tab === tabName) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+
+    window.scrollTo(0, 0);
+  }
+
+  function go(name) {
+    if (location.hash === '#' + name) show(name);
+    else location.hash = name;                          // hashchange에서 show 호출
+  }
+
+  function goBack(fromName) {
+    go(PARENT[fromName] || 'home');
+  }
+
+  window.addEventListener('hashchange', function () { show(currentName()); });
+
+  // 입력이 있어야 버튼 활성화
+  input.addEventListener('input', function () {
+    btnCheck.disabled = !input.value.trim();
+    if (!inputError.hidden && input.value.trim()) inputError.hidden = true;
+  });
+
+  // 유형 확인하기 → 확인 결과 (원문은 변수·저장소에 보관하지 않고 화면에만 표시)
+  btnCheck.addEventListener('click', function () {
+    var text = input.value.trim();
+    if (!text) { inputError.hidden = false; return; }
+    resultText.textContent = text;                      // textContent: 붙여넣은 문구를 HTML로 해석하지 않음
+    go('result');
+  });
+
+  document.getElementById('btn-back').addEventListener('click', function () { goBack('result'); });
+  document.getElementById('btn-detail-back').addEventListener('click', function () { goBack('detail'); });
+
+  // 사례 카드의 '자세히 보기'·'열기' → 사례 상세 (이벤트 위임: 카드가 나중에 생성돼도 동작)
+  document.addEventListener('click', function (e) {
+    var open = e.target.closest('.btn-open');
+    if (!open) return;
+    document.getElementById('case-detail').dataset.id = open.dataset.id;
+    go('detail');
+  });
+
+  show(currentName());
+})();
+
+</script>
+</body>
+</html>

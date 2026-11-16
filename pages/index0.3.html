@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>똑똑 안심톡</title>
+<style>
+/* 모바일 세로 375px 기준. 본문 16px 이상, 버튼 44px 이상. 색은 로우파이(흑백) */
+:root{--ink:#111;--line:#111;--soft:#eee;--mid:#ccc;--tab-h:56px;--bar-h:76px;--hdr-h:56px}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font:18px/1.5 system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;overflow-wrap:anywhere}
+[hidden]{display:none !important}
+h1,h2,h3,p,ul{margin:0}
+ul{padding:0;list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+#app{max-width:480px;min-height:100vh;margin:0 auto;position:relative;border-inline:1px solid var(--mid)}
+.screen{min-height:100vh}
+.screen-body{padding:16px 16px calc(var(--tab-h) + 24px);display:flex;flex-direction:column;gap:14px}
+.screen-body.has-bottom-bar{padding-bottom:calc(var(--bar-h) + 24px)}
+
+/* 헤더 */
+.app-header{display:flex;align-items:center;gap:10px;min-height:var(--hdr-h);padding:6px 16px;border-bottom:2px solid var(--line);background:#fff}
+.app-title{font-size:22px;line-height:1.3;font-weight:700;min-width:0}
+.logo{flex:none;width:40px;height:40px}
+.btn-icon{flex:none;width:44px;height:44px;border:1.5px solid var(--line);background:var(--soft);font-size:20px;font-weight:700;cursor:pointer}
+
+/* 글 요소 */
+.section-title{font-size:20px;font-weight:700;line-height:1.35}
+.detail-heading{font-size:24px;line-height:1.35}
+.label{font-size:18px;font-weight:700}
+.help,.privacy-note,.notice-small,.state-desc,.case-meta{font-size:18px;color:#222}
+.notice{border:1.5px dashed var(--line);padding:10px 12px;font-weight:700}
+.field-error{font-weight:700}
+.result-type{font-size:24px;font-weight:700;line-height:1.35}
+.result-text{border:1.5px solid var(--line);padding:12px;line-height:1.7}
+mark{background:#cfcfcf;text-decoration:underline;font-weight:700;color:inherit}
+.check-list,.plain-list{display:flex;flex-direction:column;gap:8px}
+.check-list li{border:1.5px solid var(--line);padding:10px 12px}
+.plain-list li{padding-left:1.1em;position:relative}
+.plain-list li::before{content:"•";position:absolute;left:0}
+
+#case-detail{display:flex;flex-direction:column;gap:10px}
+#case-detail .section-title{margin-top:8px}
+.btn{color:var(--ink)}
+.btn-primary{color:#fff}
+/* 입력·버튼 */
+.input-area{width:100%;min-height:190px;border:1.5px solid var(--line);padding:12px;resize:vertical;border-radius:0}
+.input-line,.select{width:100%;min-height:48px;border:1.5px solid var(--line);padding:0 12px;border-radius:0;background:#fff}
+.btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:6px 14px;border:1.5px solid var(--line);background:var(--soft);font-weight:700;text-align:center;text-decoration:none;cursor:pointer;border-radius:0}
+.btn-lg{min-height:60px;font-size:20px}
+.btn-wide{width:100%}
+.btn:disabled{background:var(--mid);color:#222;border-style:dashed;cursor:not-allowed}
+.btn-text{min-height:44px;padding:0 8px;border:0;background:none;font-weight:700;text-decoration:underline;cursor:pointer;margin-left:auto}
+.btn-row,.hotline-links{display:flex;gap:8px;flex-wrap:wrap}
+.btn-row>.btn,.hotline-links>.btn{flex:1 1 140px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+
+/* 긴급 신고 */
+.hotline{margin-top:6px;border:1.5px solid var(--line);background:var(--soft);padding:12px;display:flex;flex-direction:column;gap:10px}
+.hotline-title{font-size:20px}
+
+/* 상태 박스 */
+.state-box{border:1.5px dashed var(--line);background:var(--soft);padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.state-title{font-weight:700;font-size:20px}
+.skeleton{width:100%;height:84px;background:var(--mid)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--bar-h) + 12px);width:min(448px,calc(100% - 32px));background:var(--ink);color:#fff;padding:12px 14px;font-weight:700;z-index:30}
+
+/* 사례 목록 */
+.filters{display:flex;flex-direction:column;gap:10px}
+.chips,.more-filters{display:flex;gap:6px;flex-wrap:wrap}
+.chip{min-height:44px;padding:0 10px;white-space:nowrap;font-size:17px;border:1.5px solid var(--line);background:#fff;font-weight:700;cursor:pointer;border-radius:22px}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+.chip-more{border-style:dashed}
+.sort-row{display:flex;align-items:center;gap:10px}
+.sort-row label{flex:none;font-weight:700;margin-left:auto}
+.result-count{font-size:20px;flex:none}
+.sort-row .select{flex:0 1 190px;min-width:0}
+.card-list{display:flex;flex-direction:column;gap:12px}
+.case-card{border:1.5px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:6px}
+.case-type{align-self:flex-start;border:1.5px solid var(--line);padding:0 8px;font-weight:700;font-size:17px}
+.case-title{font-size:20px;line-height:1.4}
+.case-actions{display:flex;gap:8px;margin-top:6px}
+.case-actions .btn{flex:1 1 0;min-height:44px}
+.btn-save-card[aria-pressed="true"],.btn-save-case[aria-pressed="true"]{background:var(--ink);color:#fff}
+#btn-save-case[aria-pressed="true"]{background:#fff;color:var(--ink)}
+
+/* 저장함 */
+
+/* 하단 고정: 저장 바(2단계) / 탭바(1단계) */
+.bottom-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(480px,100%);padding:8px 16px;background:#fff;border-top:2px solid var(--line);z-index:20;min-height:var(--bar-h)}
+.bottom-bar .btn{width:100%}
+.tabbar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(480px,100%);display:flex;background:#fff;border-top:2px solid var(--line);z-index:20}
+.tab{flex:1 1 0;min-height:var(--tab-h);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--ink);text-decoration:none;border-right:1px solid var(--line)}
+.tab:last-child{border-right:0}
+.tab[aria-current="page"]{background:var(--ink);color:#fff}
+/* 2단계 화면이 보이면 탭바를 숨김 (JS 없이도 동작) */
+#app:has(#screen-result:not([hidden])) #tabbar,
+#app:has(#screen-detail:not([hidden])) #tabbar{display:none}
+
+@media (max-width:359px){
+  .app-title{font-size:19px}
+  .btn-lg{font-size:18px}
+  .tab{font-size:17px}
+}
+
+.btn-primary,.btn-primary:disabled{--x:0}
+.btn.btn-primary{background:var(--ink);color:#fff}
+.btn.btn-primary:disabled{background:var(--mid);color:#222}
+
+#result-found{display:flex;flex-direction:column;gap:12px}
+
+/* 이미 보냈다면 (접이식) */
+.fold{border:2px solid var(--line);background:#fff}
+.fold-summary{display:flex;align-items:center;min-height:56px;padding:8px 14px;font-weight:700;font-size:20px;cursor:pointer;list-style:none}
+.fold-summary::-webkit-details-marker{display:none}
+.fold-summary::after{content:"＋";margin-left:auto;padding-left:10px}
+.fold[open]>.fold-summary::after{content:"－"}
+.fold[open]>.fold-summary{border-bottom:1.5px solid var(--line);background:var(--soft)}
+.fold-body{display:flex;flex-direction:column;gap:10px;padding:14px}
+.fold-inner{border-width:1.5px;border-style:dashed}
+.fold-inner .fold-summary{font-size:18px;min-height:48px}
+.steps{display:flex;flex-direction:column;gap:10px;padding-left:1.4em}
+.steps li{padding-left:.2em}
+.steps a{font-weight:700;color:var(--ink)}
+#already-sent{border-color:var(--ink)}
+
+/* 홈: 예시 기사 */
+.news{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.news-card{border:1.5px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:8px}
+.news-headline{font-size:20px;line-height:1.4}
+.news-headline a{color:var(--ink)}
+.news-summary{font-size:18px}
+
+/* 유형 필터 라벨·저장함 건수 */
+.filter-label{font-weight:700;font-size:18px}
+.saved-count{font-size:18px}
+
+</style>
+</head>
+<body>
+<!-- 규칙: id = JS가 한 번만 찾는 요소 / class = 반복 요소 / data-field = JSON 필드명(camelCase) 그대로 -->
+<div id="app">
+
+  <!-- ===== 1. 홈 (1단계 탭 화면) ===== -->
+  <section id="screen-home" class="screen" data-screen="home" aria-labelledby="service-name">
+    <header class="app-header">
+      <img id="logo" class="logo" alt="" width="40" height="40" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='none' stroke='%23111' stroke-width='2'/%3E%3Cpath d='M0 40L40 0' stroke='%23111' stroke-width='2'/%3E%3C/svg%3E">
+      <h1 id="service-name" class="app-title">똑똑 안심톡</h1>
+    </header>
+
+    <main class="screen-body">
+      <!-- 상태 영역: 오류 (기본 숨김) -->
+      <div id="state-home-error" class="state-box" role="alert" hidden>
+        <p class="state-title">사례 데이터를 불러오지 못했습니다</p>
+        <p class="state-desc">문구 확인은 계속 사용할 수 있습니다</p>
+        <button id="btn-home-retry" type="button" class="btn">다시 시도</button>
+      </div>
+
+      <h2 class="section-title">받은 메시지를 붙여넣으세요</h2>
+      <label for="input-text" class="visually-hidden">의심되는 메시지 입력</label>
+      <textarea id="input-text" class="input-area" rows="7" placeholder="여기에 의심되는 메시지를 붙여넣기" aria-describedby="paste-help"></textarea>
+      <button id="btn-paste" type="button" class="btn">붙여넣기</button>
+      <p id="paste-help" class="help">'붙여넣기' 버튼을 누르거나, 입력 칸을 길게 눌러 '붙여넣기'를 선택하세요</p>
+      <p id="paste-fail" class="field-error" role="alert" hidden>자동 붙여넣기가 막혔습니다. 입력 칸을 길게 눌러 '붙여넣기'를 선택하세요</p>
+      <button id="btn-check" type="button" class="btn btn-primary btn-lg" disabled>유형 확인하기</button>
+      <p id="input-error" class="field-error" role="alert" hidden>문구를 먼저 입력해 주세요</p>
+      <p class="privacy-note">입력한 문구 원문은 저장하지 않습니다</p>
+
+      <section id="news" class="news" aria-labelledby="news-title">
+        <h2 id="news-title" class="section-title">이런 사례가 늘고 있어요</h2>
+        <article class="news-card">
+          <h3 class="news-headline"><a id="news-link" href="https://www.hankookilbo.com/news/article/A2026073114470000889" target="_blank" rel="noopener noreferrer">"엄마 나 종수야" 호칭·이름까지 정확… 스미싱 범죄 더 악랄해졌다</a></h3>
+          <p class="news-summary">가족을 사칭한 스미싱이 자녀 이름과 호칭까지 맞춰 쓰는 방식으로 바뀌고 있다는 보도입니다. 한 민간 보고서에서 확인된 피해자의 약 94%가 50대 이상이었다고 합니다.</p>
+          <p class="case-meta"><span class="news-source">한국일보</span> · <time class="news-date" datetime="2026-08">2026-08</time> (새 탭에서 열림)</p>
+        </article>
+      </section>
+
+      <section id="hotline" class="hotline" aria-label="긴급 신고처">
+        <h2 class="hotline-title">긴급 신고</h2>
+        <div class="hotline-links">
+          <a class="btn" href="tel:112">경찰청 112</a>
+          <a class="btn" href="tel:1332">금융감독원 1332</a>
+        </div>
+        <p class="notice-small">카카오와 무관한 서비스입니다</p>
+      </section>
+    </main>
+  </section>
+
+  <!-- ===== 2. 확인 결과 (2단계 화면) ===== -->
+  <section id="screen-result" class="screen" data-screen="result" aria-labelledby="result-title" hidden>
+    <header class="app-header">
+      <button id="btn-back" type="button" class="btn-icon" aria-label="뒤로">←</button>
+      <h1 id="result-title" class="app-title">확인 결과</h1>
+    </header>
+
+    <main class="screen-body">
+      <details id="already-sent" class="fold">
+        <summary class="fold-summary">이미 돈을 보내거나 정보를 알려줬어요</summary>
+        <div class="fold-body">
+          <h2 class="section-title">지금 바로 해야 할 일</h2>
+          <ol class="steps">
+            <li><strong>112에 전화하세요.</strong> <a href="tel:1394">1394</a>, <a href="tel:1332">1332</a>도 가능합니다.</li>
+            <li><strong>송금한 은행에 전화해서 지급정지를 요청하세요.</strong></li>
+            <li><strong>3영업일 안에 은행에 피해구제신청서를 내세요.</strong> 경찰에서 받은 서류와 신분증이 필요합니다.</li>
+          </ol>
+          <p>받은 메시지 화면, 송금 내역, 상대 계좌번호는 지우지 말고 그대로 두세요.</p>
+          <details id="more-help" class="fold fold-inner">
+            <summary class="fold-summary">더 알아보기</summary>
+            <ul class="plain-list fold-body">
+              <li>악성 앱이나 링크 피해: 한국인터넷진흥원 118</li>
+              <li>내 이름으로 만든 계좌를 한 번에 막기: 내계좌 일괄지급정지</li>
+              <li>내 이름으로 만든 휴대폰 확인·차단: 명의도용방지서비스(M-Safer)</li>
+            </ul>
+          </details>
+        </div>
+      </details>
+
+      <div id="result-found">
+        <p class="label">비슷한 유형</p>
+        <p id="result-type" class="result-type" data-type-id="">가족 사칭 + 금융정보 요구</p>
+        <p id="result-notice" class="notice">확정 판단이 아닙니다. 참고용 안내입니다.</p>
+
+        <h2 class="section-title">입력한 문구</h2>
+        <p id="result-text" class="result-text">엄마 폰 고장 나서 <mark>급하게</mark> <mark>카드 정보</mark> 좀 보내줘</p>
+
+        <h2 class="section-title">지금 해야 할 일</h2>
+        <ul id="result-actions" class="check-list">
+          <li>메시지 속 링크·번호는 누르지 마세요</li>
+          <li>가족에게 직접 전화로 확인하세요</li>
+          <li>카드·신분증 정보는 보내지 마세요</li>
+        </ul>
+
+        <div class="hotline-links">
+          <a id="call-112" class="btn" href="tel:112">경찰청 112</a>
+          <a id="call-1332" class="btn" href="tel:1332">금융감독원 1332</a>
+        </div>
+
+        <a id="btn-similar" class="btn btn-wide" href="#cases"><span>비슷한 사례 <span id="similar-count">7</span>건 보기</span></a>
+      </div>
+
+      <!-- 상태 영역: 유형 없음 (기본 숨김) -->
+      <div id="result-none" class="state-box" hidden>
+        <p class="state-title">비슷한 유형을 찾지 못했습니다</p>
+        <p class="state-desc">안전하다는 뜻은 아닙니다. 링크를 누르거나 돈·정보를 보내기 전에, 가족에게 직접 전화해서 확인하세요.</p>
+        <div class="hotline-links">
+          <a class="btn" href="tel:112">경찰청 112</a>
+          <a class="btn" href="tel:1332">금융감독원 1332</a>
+        </div>
+      </div>
+    </main>
+
+  </section>
+
+  <!-- ===== 3. 사례 목록 (1단계 탭 화면) ===== -->
+  <section id="screen-cases" class="screen" data-screen="cases" aria-labelledby="cases-title" hidden>
+    <header class="app-header">
+      <h1 id="cases-title" class="app-title">비슷한 사례</h1>
+    </header>
+
+    <main class="screen-body">
+      <div class="filters">
+        <label for="query" class="visually-hidden">제목·요약 검색</label>
+        <input id="query" class="input-line" type="search" placeholder="제목·요약 검색">
+
+        <p id="type-filter-label" class="filter-label">유형</p>
+        <div id="type-filters" class="chips" role="group" aria-labelledby="type-filter-label">
+          <button type="button" class="chip" data-type="" aria-pressed="false">전체</button>
+          <button type="button" class="chip" data-type="family" aria-pressed="true">가족 사칭</button>
+          <button type="button" class="chip" data-type="agency" aria-pressed="false">기관 사칭</button>
+          <button id="btn-more" type="button" class="chip chip-more" aria-expanded="false" aria-controls="more-filters">더보기</button>
+        </div>
+        <div id="more-filters" class="more-filters" hidden>
+          <button type="button" class="chip" data-type="loan" aria-pressed="false">대출 사칭</button>
+          <button type="button" class="chip" data-type="shipping" aria-pressed="false">택배 사칭</button>
+        </div>
+
+        <div class="sort-row">
+          <p class="result-count" aria-live="polite"><strong><span id="result-count">3</span>건</strong></p>
+          <label for="sort">정렬</label>
+          <select id="sort" class="select">
+            <option value="latest">최신순</option>
+            <option value="type">유형순</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 상태 영역 (기본 숨김, 한 번에 하나만 표시) -->
+      <div id="state-loading" class="state-box" role="status" hidden>
+        <p class="state-title">사례를 불러오는 중입니다</p>
+        <div class="skeleton"></div><div class="skeleton"></div>
+      </div>
+      <div id="state-empty" class="state-box" hidden>
+        <p class="state-title">조건에 맞는 사례가 없습니다</p>
+        <p class="state-desc">검색어나 유형을 바꿔 보세요</p>
+        <div class="btn-row">
+          <button id="btn-reset" type="button" class="btn">조건 초기화</button>
+          <button id="btn-all" type="button" class="btn">전체 사례 보기</button>
+        </div>
+      </div>
+      <div id="state-cases-error" class="state-box" role="alert" hidden>
+        <p class="state-title">사례 데이터를 불러오지 못했습니다</p>
+        <button id="btn-retry" type="button" class="btn">다시 시도</button>
+      </div>
+
+      <!-- 카드 목록: 손으로 작성한 3건. JS는 template#case-card-tpl 로 같은 구조를 복제 -->
+      <ul id="case-list" class="card-list">
+        <li class="case-card" data-id="1" data-type="family">
+          <p class="case-type" data-field="type">가족 사칭</p>
+          <h3 class="case-title" data-field="title">자녀 사칭 메시지로 카드 정보 요구</h3>
+          <p class="case-meta"><span class="case-source" data-field="source">금융감독원</span> · <time class="case-date" data-field="collectedAt" datetime="2026-09-28">2026-09-28</time></p>
+          <div class="case-actions">
+            <button type="button" class="btn btn-open" data-id="1">자세히 보기</button>
+            <button type="button" class="btn btn-save-card" data-id="1" aria-pressed="false">저장</button>
+          </div>
+        </li>
+        <li class="case-card" data-id="2" data-type="family">
+          <p class="case-type" data-field="type">가족 사칭</p>
+          <h3 class="case-title" data-field="title">손주 사칭 급전 송금 요구</h3>
+          <p class="case-meta"><span class="case-source" data-field="source">경찰청</span> · <time class="case-date" data-field="collectedAt" datetime="2026-09-15">2026-09-15</time></p>
+          <div class="case-actions">
+            <button type="button" class="btn btn-open" data-id="2">자세히 보기</button>
+            <button type="button" class="btn btn-save-card" data-id="2" aria-pressed="true">저장됨</button>
+          </div>
+        </li>
+        <li class="case-card" data-id="3" data-type="family">
+          <p class="case-type" data-field="type">가족 사칭</p>
+          <h3 class="case-title" data-field="title">휴대폰 고장을 핑계로 상품권 구매 요구</h3>
+          <p class="case-meta"><span class="case-source" data-field="source">한국소비자원</span> · <time class="case-date" data-field="collectedAt" datetime="2026-08-30">2026-08-30</time></p>
+          <div class="case-actions">
+            <button type="button" class="btn btn-open" data-id="3">자세히 보기</button>
+            <button type="button" class="btn btn-save-card" data-id="3" aria-pressed="false">저장</button>
+          </div>
+        </li>
+        <li class="case-card" data-id="4" data-type="agency">
+          <p class="case-type" data-field="type">기관 사칭</p>
+          <h3 class="case-title" data-field="title">금융기관 직원 사칭 계좌 이체 유도</h3>
+          <p class="case-meta"><span class="case-source" data-field="source">금융감독원</span> · <time class="case-date" data-field="collectedAt" datetime="2026-09-10">2026-09-10</time></p>
+          <div class="case-actions">
+            <button type="button" class="btn btn-open" data-id="4">자세히 보기</button>
+            <button type="button" class="btn btn-save-card" data-id="4" aria-pressed="true">저장됨</button>
+          </div>
+        </li>
+      </ul>
+      <template id="case-card-tpl">
+        <li class="case-card" data-id="" data-type="">
+          <p class="case-type" data-field="type"></p>
+          <h3 class="case-title" data-field="title"></h3>
+          <p class="case-meta"><span class="case-source" data-field="source"></span> · <time class="case-date" data-field="collectedAt"></time></p>
+          <div class="case-actions">
+            <button type="button" class="btn btn-open" data-id="">자세히 보기</button>
+            <button type="button" class="btn btn-save-card" data-id="" aria-pressed="false">저장</button>
+          </div>
+        </li>
+      </template>
+    </main>
+  </section>
+
+  <!-- ===== 4. 사례 상세 (2단계 화면, 기본 숨김) ===== -->
+  <section id="screen-detail" class="screen" data-screen="detail" aria-labelledby="detail-title" hidden>
+    <header class="app-header">
+      <button id="btn-detail-back" type="button" class="btn-icon" aria-label="뒤로">←</button>
+      <h1 id="detail-title" class="app-title">사례 상세</h1>
+    </header>
+
+    <main class="screen-body has-bottom-bar">
+      <article id="case-detail" data-id="">
+        <p id="case-type" class="case-type" data-field="type">가족 사칭</p>
+        <h2 id="case-title" class="detail-heading" data-field="title">자녀 사칭 카드 정보 요구 사례</h2>
+
+        <h3 class="section-title">수법 요약</h3>
+        <p id="case-summary" data-field="summary">자녀를 사칭해 휴대폰 고장을 핑계로 카드 정보를 요구합니다.</p>
+
+        <h3 class="section-title">위험 신호</h3>
+        <ul id="case-risks" class="plain-list" data-field="riskSigns">
+          <li>평소와 다른 말투</li>
+          <li>급하게 재촉</li>
+          <li>카드·신분증 정보 요구</li>
+        </ul>
+
+        <h3 class="section-title">수법 설명</h3>
+        <p id="case-method" data-field="method">먼저 휴대폰 고장을 알린 뒤 원격 앱 설치나 카드 정보 전달을 유도합니다.</p>
+
+        <h3 class="section-title">대응 행동</h3>
+        <ul id="case-actions" class="plain-list" data-field="actions">
+          <li>직접 전화로 확인하기</li>
+          <li>112·1332 문의하기</li>
+        </ul>
+
+        <h3 class="section-title">출처</h3>
+        <p class="case-meta"><span id="case-source" data-field="source">금융감독원</span> · <time id="case-date" data-field="collectedAt" datetime="2026-09-28">2026-09-28</time></p>
+        <a id="source-link" class="btn btn-wide" data-field="sourceUrl" href="#" target="_blank" rel="noopener noreferrer">출처 링크 열기 (새 탭)</a>
+      </article>
+
+      <div id="toast" class="toast" role="status" hidden>'자녀 사칭 카드 정보 요구' 사례를 저장했습니다</div>
+    </main>
+
+    <!-- 고정 영역: 저장 바 -->
+    <div class="bottom-bar">
+      <button id="btn-save-case" type="button" class="btn btn-primary btn-lg" aria-pressed="false">저장</button>
+    </div>
+  </section>
+
+  <!-- ===== 5. 저장함 (1단계 탭 화면) ===== -->
+  <section id="screen-saved" class="screen" data-screen="saved" aria-labelledby="saved-title" hidden>
+    <header class="app-header">
+      <h1 id="saved-title" class="app-title">저장함</h1>
+    </header>
+
+    <main class="screen-body">
+      <p id="saved-count" class="saved-count">저장한 사례 <strong><span id="saved-count-num">2</span>건</strong></p>
+
+      <div class="filters">
+        <p id="saved-type-filter-label" class="filter-label">유형</p>
+        <div id="saved-type-filters" class="chips" role="group" aria-labelledby="saved-type-filter-label">
+          <button type="button" class="chip" data-type="" aria-pressed="true">전체</button>
+          <button type="button" class="chip" data-type="family" aria-pressed="false">가족 사칭</button>
+          <button type="button" class="chip" data-type="agency" aria-pressed="false">기관 사칭</button>
+        </div>
+      </div>
+
+      <!-- 사례 목록과 같은 카드 구조·클래스 재사용. 저장 해제는 '저장됨' 버튼으로 -->
+      <ul id="saved-case-list" class="card-list">
+        <li class="case-card" data-id="2" data-type="family">
+          <p class="case-type" data-field="type">가족 사칭</p>
+          <h3 class="case-title" data-field="title">손주 사칭 급전 송금 요구</h3>
+          <p class="case-meta"><span class="case-source" data-field="source">경찰청</span> · <time class="case-date" data-field="collectedAt" datetime="2026-09-15">2026-09-15</time></p>
+          <div class="case-actions">
+            <button type="button" class="btn btn-open" data-id="2">자세히 보기</button>
+            <button type="button" class="btn btn-save-card" data-id="2" aria-pressed="true">저장됨</button>
+          </div>
+        </li>
+        <li class="case-card" data-id="4" data-type="agency">
+          <p class="case-type" data-field="type">기관 사칭</p>
+          <h3 class="case-title" data-field="title">금융기관 직원 사칭 계좌 이체 유도</h3>
+          <p class="case-meta"><span class="case-source" data-field="source">금융감독원</span> · <time class="case-date" data-field="collectedAt" datetime="2026-09-10">2026-09-10</time></p>
+          <div class="case-actions">
+            <button type="button" class="btn btn-open" data-id="4">자세히 보기</button>
+            <button type="button" class="btn btn-save-card" data-id="4" aria-pressed="true">저장됨</button>
+          </div>
+        </li>
+      </ul>
+
+      <!-- 상태 영역 (기본 숨김) -->
+      <div id="state-saved-filter-empty" class="state-box" hidden>
+        <p class="state-title">이 유형으로 저장한 사례가 없습니다</p>
+        <button id="btn-saved-all" type="button" class="btn">전체 보기</button>
+      </div>
+      <div id="state-saved-empty" class="state-box" hidden>
+        <p class="state-title">아직 저장한 사례가 없습니다</p>
+        <p class="state-desc">마음에 드는 사례를 저장하면 여기에 모입니다</p>
+      </div>
+    </main>
+  </section>
+
+  <!-- ===== 공통 하단 탭바: 1단계 화면(홈·사례·저장함)에서만 표시 ===== -->
+  <nav id="tabbar" class="tabbar" aria-label="주 메뉴">
+    <a class="tab" data-tab="home" href="#home" aria-current="page">홈</a>
+    <a class="tab" data-tab="cases" href="#cases">사례</a>
+    <a class="tab" data-tab="saved" href="#saved">저장함</a>
+  </nav>
+</div>
+<script>
+'use strict';
+
+// 화면 전환만 담당합니다. 유형 판별·JSON·저장은 이후 단계에서 추가합니다.
+// 방식: 단일 HTML, 해시(#home 등)로 화면 하나만 hidden 해제 → 브라우저 뒤로가기도 동작
+(function () {
+  var SCREENS = ['home', 'result', 'cases', 'detail', 'saved'];
+  var TAB_SCREENS = ['home', 'cases', 'saved'];       // 1단계: 탭바 표시
+  var PARENT = { result: 'home', detail: 'cases' };     // 2단계: 뒤로가기 대상
+
+  var tabs = document.querySelectorAll('#tabbar .tab');
+  var input = document.getElementById('input-text');
+  var btnCheck = document.getElementById('btn-check');
+  var inputError = document.getElementById('input-error');
+  var resultText = document.getElementById('result-text');
+  var btnPaste = document.getElementById('btn-paste');
+  var pasteFail = document.getElementById('paste-fail');
+  var detailOrigin = 'cases';                           // 상세로 들어온 화면 (cases 또는 saved)
+
+  function currentName() {
+    var name = location.hash.replace('#', '');
+    return SCREENS.indexOf(name) === -1 ? 'home' : name;
+  }
+
+  function show(name) {
+    // 입력 없이 확인 결과로 직접 들어오면 홈으로 되돌림 (원문은 저장하지 않으므로 새로고침 시 사라짐)
+    if (name === 'result' && !input.value.trim()) name = 'home';
+
+    SCREENS.forEach(function (s) {
+      document.getElementById('screen-' + s).hidden = (s !== name);
+    });
+
+    // 탭 강조는 1단계 화면에서만, 2단계는 부모 탭 기준
+    var tabName = TAB_SCREENS.indexOf(name) !== -1 ? name : (name === 'detail' ? detailOrigin : PARENT[name]);
+    tabs.forEach(function (a) {
+      if (a.dataset.tab === tabName) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+
+    window.scrollTo(0, 0);
+  }
+
+  function go(name) {
+    if (location.hash === '#' + name) show(name);
+    else location.hash = name;                          // hashchange에서 show 호출
+  }
+
+  function goBack(fromName) {
+    go(fromName === 'detail' ? detailOrigin : (PARENT[fromName] || 'home'));
+  }
+
+  window.addEventListener('hashchange', function () { show(currentName()); });
+
+  // 입력이 있어야 버튼 활성화
+  input.addEventListener('input', function () {
+    btnCheck.disabled = !input.value.trim();
+    if (!inputError.hidden && input.value.trim()) inputError.hidden = true;
+    pasteFail.hidden = true;
+  });
+
+  // 붙여넣기 버튼: 클립보드 읽기가 막히면 기존 방법(길게 눌러 붙여넣기)을 안내
+  function pasteFailed() { pasteFail.hidden = false; input.focus(); }
+  btnPaste.addEventListener('click', function () {
+    if (!navigator.clipboard || !navigator.clipboard.readText) { pasteFailed(); return; }
+    navigator.clipboard.readText().then(function (text) {
+      if (!text.trim()) { pasteFailed(); return; }
+      input.value = text;
+      input.dispatchEvent(new Event('input'));
+    }).catch(pasteFailed);
+  });
+
+  // 유형 확인하기 → 확인 결과 (원문은 변수·저장소에 보관하지 않고 화면에만 표시)
+  btnCheck.addEventListener('click', function () {
+    var text = input.value.trim();
+    if (!text) { inputError.hidden = false; return; }
+    resultText.textContent = text;                      // textContent: 붙여넣은 문구를 HTML로 해석하지 않음
+    go('result');
+  });
+
+  document.getElementById('btn-back').addEventListener('click', function () { goBack('result'); });
+  document.getElementById('btn-detail-back').addEventListener('click', function () { goBack('detail'); });
+
+  // 사례 카드의 '자세히 보기'·'열기' → 사례 상세 (이벤트 위임: 카드가 나중에 생성돼도 동작)
+  document.addEventListener('click', function (e) {
+    var open = e.target.closest('.btn-open');
+    if (!open) return;
+    detailOrigin = currentName() === 'saved' ? 'saved' : 'cases';   // 뒤로가기 때 돌아갈 화면
+    document.getElementById('case-detail').dataset.id = open.dataset.id;
+    go('detail');
+  });
+
+
+  // ----- 유형 필터 (사례 목록·저장함 공통) -----
+  // 칩(data-type)을 누르면 카드(data-type)를 거르고, 건수와 '결과 없음' 영역을 갱신
+  function setupTypeFilter(cfg) {
+    var screen = document.getElementById(cfg.screenId);
+    var chips = screen.querySelectorAll('.chip[data-type]');
+    var cards = document.getElementById(cfg.listId).querySelectorAll('.case-card');
+    var countEl = document.getElementById(cfg.countId);
+    var emptyEl = document.getElementById(cfg.emptyId);
+    var listEl = document.getElementById(cfg.listId);
+
+    function apply(type) {
+      var visible = 0;
+      chips.forEach(function (c) {
+        c.setAttribute('aria-pressed', c.dataset.type === type ? 'true' : 'false');
+      });
+      cards.forEach(function (card) {
+        var show = !type || card.dataset.type === type;
+        card.hidden = !show;
+        if (show) visible++;
+      });
+      countEl.textContent = visible;
+      emptyEl.hidden = visible !== 0;
+      listEl.hidden = visible === 0;
+    }
+
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () { apply(c.dataset.type); });
+    });
+    (cfg.resetIds || []).forEach(function (id) {
+      document.getElementById(id).addEventListener('click', function () { apply(''); });
+    });
+
+    var pressed = screen.querySelector('.chip[data-type][aria-pressed="true"]');
+    apply(pressed ? pressed.dataset.type : '');       // 처음 표시: HTML에서 선택된 칩 기준
+  }
+
+  setupTypeFilter({ screenId: 'screen-cases', listId: 'case-list', countId: 'result-count',
+                    emptyId: 'state-empty', resetIds: ['btn-reset', 'btn-all'] });
+  setupTypeFilter({ screenId: 'screen-saved', listId: 'saved-case-list', countId: 'saved-count-num',
+                    emptyId: 'state-saved-filter-empty', resetIds: ['btn-saved-all'] });
+
+  // 조건 더보기 펼치기·접기
+  var btnMore = document.getElementById('btn-more');
+  var morePanel = document.getElementById('more-filters');
+  btnMore.addEventListener('click', function () {
+    var open = morePanel.hidden;
+    morePanel.hidden = !open;
+    btnMore.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  show(currentName());
+})();
+
+</script>
+</body>
+</html>
