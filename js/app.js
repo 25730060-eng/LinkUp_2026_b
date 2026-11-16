@@ -95,10 +95,15 @@
     var none = document.getElementById('source-none');
     if (/^https:\/\//.test(url)) { link.href = url; link.hidden = false; none.hidden = true; }
     else { link.removeAttribute('href'); link.hidden = true; none.hidden = false; }
-    var srcEl = card && card.querySelector('.case-source');
-    var dateEl = card && card.querySelector('.case-date');
-    if (srcEl) document.getElementById('case-source').textContent = srcEl.textContent;
-    if (dateEl) document.getElementById('case-date').textContent = dateEl.textContent;
+    var item = findCase(open.dataset.id);
+    if (item) {
+      fillDetail(item);                                  // JSON 데이터로 상세를 채움
+    } else {                                             // 마이페이지의 손으로 쓴 카드(아직 JSON 연결 전)는 기존 방식
+      var srcEl = card && card.querySelector('.case-source');
+      var dateEl = card && card.querySelector('.case-date');
+      if (srcEl) document.getElementById('case-source').textContent = srcEl.textContent;
+      if (dateEl) document.getElementById('case-date').textContent = dateEl.textContent;
+    }
     go('detail');
   });
 
@@ -139,19 +144,221 @@
     apply(pressed ? pressed.dataset.type : '');       // 처음 표시: HTML에서 선택된 칩 기준
   }
 
-  setupTypeFilter({ screenId: 'screen-cases', listId: 'case-list', countId: 'result-count',
-                    emptyId: 'state-empty', resetIds: ['btn-reset', 'btn-all'] });
   setupTypeFilter({ screenId: 'screen-saved', listId: 'saved-case-list', countId: 'saved-count-num',
                     emptyId: 'state-saved-filter-empty', resetIds: ['btn-saved-all'] });
 
-  // 조건 더보기 펼치기·접기
-  var btnMore = document.getElementById('btn-more');
-  var morePanel = document.getElementById('more-filters');
-  btnMore.addEventListener('click', function () {
-    var open = morePanel.hidden;
-    morePanel.hidden = !open;
-    btnMore.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+  // =====================================================================
+  // 9주차: 데이터 연결 → 점검 → 상태(state) → 결과 배열(results) → 화면(renderList)
+  //   cases   : JSON에서 읽은 원본 배열 (화면에서 절대 바꾸지 않음)
+  //   state   : 검색어·유형·실제 사례만·정렬 — 화면 조건은 전부 여기 하나에 모음
+  //   results(): 원본에서 조건에 맞는 새 배열을 만들어 돌려줌
+  // =====================================================================
+  var DATA_URL = 'data/cases_all.json';
+  var TYPES_URL = 'data/types.json';
+  var PAGE_SIZE = 20;
+
+  var cases = [];                                        // 원본 배열
+  var types = [];                                        // [{typeId, typeName}]
+  var typeName = {};                                     // typeId → 표시 이름
+  var state = defaultState();
+  var shown = PAGE_SIZE;                                 // 지금 화면에 보여줄 건수
+
+  function defaultState() { return { search: '', type: '', realOnly: true, sort: 'latest' }; }
+  function $(id) { return document.getElementById(id); }
+  function findCase(id) { for (var i = 0; i < cases.length; i++) if (cases[i].id === id) return cases[i]; return null; }
+  function norm(t) { return String(t || '').replace(/\s/g, '').toLowerCase(); }
+
+  // ----- 7주차 데이터 점검: 배열·건수·필드·id·필수 필드·허용값을 Console에 출력, 문제 있는 항목은 화면에서 제외 -----
+  var REQUIRED = ['id', 'title', 'typeId'];
+  var FIELD_TYPES = { id: 'string', title: 'string', typeId: 'string', summary: 'string', method: 'string', isReal: 'boolean' };
+  function checkData(data, source, allowedTypes) {
+    console.group('[데이터 점검]', source);
+    console.log('배열인가?', Array.isArray(data));
+    if (!Array.isArray(data)) { console.groupEnd(); return null; }
+    console.log('데이터 건수:', data.length);
+    console.log('첫 번째 객체의 필드:', Object.keys(data[0] || {}));
+    var warn = [], seen = {}, nulls = {};
+    var valid = data.filter(function (p) {
+      var ok = true;
+      if (seen[p.id]) { warn.push('id 중복: ' + p.id + ' → 화면에서 제외'); ok = false; }
+      seen[p.id] = true;
+      REQUIRED.forEach(function (k) { if (p[k] === null || p[k] === undefined || p[k] === '') { warn.push('필수 필드 누락: id ' + p.id + ' ' + k + ' → 화면에서 제외'); ok = false; } });
+      Object.keys(FIELD_TYPES).forEach(function (k) {
+        var v = p[k];
+        if (v === null || v === undefined || v === '') { nulls[k] = (nulls[k] || 0) + 1; return; }
+        if (typeof v !== FIELD_TYPES[k]) warn.push('자료형: id ' + p.id + ' ' + k + ' = ' + JSON.stringify(v));
+      });
+      if (p.typeId && allowedTypes.indexOf(p.typeId) === -1) { warn.push('허용값 밖: id ' + p.id + ' typeId = "' + p.typeId + '" → 화면에서 제외'); ok = false; }
+      if (!p.sourceBasisDate) nulls.sourceBasisDate = (nulls.sourceBasisDate || 0) + 1;
+      if (!p.sourceUrl) nulls.sourceUrl = (nulls.sourceUrl || 0) + 1;
+      return ok;
+    });
+    console.log('빈 값(null) 수:', nulls);
+    if (warn.length) warn.forEach(function (w) { console.warn(w); }); else console.log('경고: 없음');
+    console.log('화면에 표시할 건수:', valid.length);
+    console.groupEnd();
+    return valid;
+  }
+
+  // ----- 불러오기 (fetch) -----
+  function fetchJson(url) {
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw new Error(url + ' ' + r.status);
+      return r.json();
+    });
+  }
+  function loadData() {
+    setLoading(true);
+    return Promise.all([fetchJson(TYPES_URL), fetchJson(DATA_URL)]).then(function (res) {
+      types = res[0];
+      types.forEach(function (t) { typeName[t.typeId] = t.typeName; });
+      var ids = types.map(function (t) { return t.typeId; });
+      var valid = checkData(res[1], DATA_URL, ids);
+      if (!valid) throw new Error('JSON 최상위가 배열이 아닙니다');
+      cases = valid;
+      buildTypeChips();
+      setLoading(false);
+      renderHome();
+      renderList(true);
+    }).catch(function (err) {
+      console.error('[불러오기 실패]', err);
+      setLoading(false);
+      showLoadError(true);
+    });
+  }
+  function setLoading(on) {
+    $('state-loading').hidden = !on;
+    if (on) { showLoadError(false); $('case-list').hidden = true; $('state-empty').hidden = true; }
+  }
+  function showLoadError(on) {
+    $('state-cases-error').hidden = !on;
+    $('state-home-error').hidden = !on;
+    $('home-case-list').hidden = on;
+    $('home-cases').hidden = on;
+    if (on) { $('case-list').hidden = true; $('btn-load-more').hidden = true; $('state-empty').hidden = true; $('result-count').textContent = '0'; }
+  }
+  $('btn-retry').addEventListener('click', loadData);
+  $('btn-home-retry').addEventListener('click', loadData);
+
+  // ----- 조건 → 결과 배열 -----
+  var SORTERS = {
+    latest: function (a, b) {                              // 기준일 최신 먼저, 기준일 없는 사례는 맨 뒤
+      var x = a.sourceBasisDate || '', y = b.sourceBasisDate || '';
+      return y.localeCompare(x) || a.title.localeCompare(b.title, 'ko');
+    },
+    type: function (a, b) {                                // types.json 순서대로 유형을 묶고, 같은 유형은 최신순
+      return typeIndex(a.typeId) - typeIndex(b.typeId) || SORTERS.latest(a, b);
+    },
+    title: function (a, b) { return a.title.localeCompare(b.title, 'ko'); }
+  };
+  function typeIndex(id) { for (var i = 0; i < types.length; i++) if (types[i].typeId === id) return i; return 99; }
+
+  function results() {
+    var q = norm(state.search);
+    return cases.filter(function (p) {
+      return (!state.realOnly || p.isReal === true) &&
+             (!state.type || p.typeId === state.type) &&
+             (!q || norm(p.title + p.summary).indexOf(q) !== -1);
+    }).sort(SORTERS[state.sort] || SORTERS.latest);      // filter가 만든 새 배열을 정렬하므로 원본 cases는 그대로
+  }
+  function activeCount() {
+    return (state.search ? 1 : 0) + (state.type ? 1 : 0) + (state.realOnly ? 1 : 0);
+  }
+
+  // ----- 카드 만들기 (목록·홈 공통) -----
+  function dateText(p) { return p.sourceBasisDate ? '기준일 ' + p.sourceBasisDate : '기준일 미확인'; }
+  function makeCard(p) {
+    var li = $('case-card-tpl').content.firstElementChild.cloneNode(true);
+    li.dataset.id = p.id; li.dataset.type = p.typeId;
+    if (p.sourceUrl && /^https:\/\//.test(p.sourceUrl)) li.dataset.sourceUrl = p.sourceUrl;
+    li.querySelector('.case-type-name').textContent = typeName[p.typeId] || p.typeId;
+    li.querySelector('.origin-tag').hidden = p.isReal === true;
+    li.querySelector('.case-title').textContent = p.title;
+    li.querySelector('.case-source').textContent = p.source || (p.isReal ? '출처 확인 중' : 'AI 보완 · 출처 없음');
+    var t = li.querySelector('.case-date'); t.textContent = dateText(p);
+    if (p.sourceBasisDate) t.setAttribute('datetime', p.sourceBasisDate);
+    li.querySelector('.btn-open').dataset.id = p.id;
+    return li;
+  }
+
+  // ----- 목록 그리기 -----
+  function renderList(reset) {
+    if (reset) shown = PAGE_SIZE;
+    var arr = results();
+    var list = $('case-list');
+    list.replaceChildren();
+    arr.slice(0, shown).forEach(function (p) { list.appendChild(makeCard(p)); });
+
+    var n = activeCount();
+    $('result-count').textContent = arr.length;
+    $('filter-count').textContent = n ? '· 조건 ' + n + '개 적용' : '';
+    $('btn-reset-all').disabled = !(state.search || state.type || !state.realOnly || state.sort !== 'latest');
+    list.hidden = arr.length === 0;
+    $('state-empty').hidden = arr.length !== 0;
+    var more = $('btn-load-more');
+    more.hidden = arr.length <= shown;
+    more.textContent = '더 보기 (' + Math.min(shown, arr.length) + ' / ' + arr.length + ')';
+    syncControls();
+  }
+  function syncControls() {
+    $('real-only').checked = state.realOnly;
+    $('sort').value = state.sort;
+    document.querySelectorAll('#type-filters .chip').forEach(function (c) {
+      c.setAttribute('aria-pressed', c.dataset.type === state.type ? 'true' : 'false');
+    });
+  }
+  function buildTypeChips() {
+    var box = $('type-filters'); box.replaceChildren();
+    [{ typeId: '', typeName: '전체' }].concat(types).forEach(function (t) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip'; b.dataset.type = t.typeId; b.textContent = t.typeName;
+      box.appendChild(b);
+    });
+  }
+
+  // ----- 홈: 최신 실제 사례 3건 -----
+  function renderHome() {
+    var list = $('home-case-list'); list.replaceChildren();
+    cases.filter(function (p) { return p.isReal; }).sort(SORTERS.latest).slice(0, 3)
+      .forEach(function (p) { list.appendChild(makeCard(p)); });
+    $('home-cases').hidden = !list.children.length;
+  }
+
+  // ----- 상세 -----
+  function fillList(ul, arr) {
+    ul.replaceChildren();
+    (arr || []).forEach(function (t) { var li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
+  }
+  function fillDetail(p) {
+    $('case-type').textContent = (typeName[p.typeId] || p.typeId) + (p.isReal ? '' : ' · AI 보완');
+    $('case-title').textContent = p.title;
+    $('case-summary').textContent = p.summary || '요약이 없습니다';
+    fillList($('case-risks'), p.riskSigns);
+    $('case-method').textContent = p.method || '설명이 없습니다';
+    fillList($('case-actions'), p.actions);
+    $('case-source').textContent = p.source || (p.isReal ? '출처 확인 중' : 'AI 보완 · 출처 없음');
+    $('case-date').textContent = dateText(p);
+    var note = $('case-note');
+    var text = p.isReal ? (p.dateNote && !p.sourceBasisDate ? '기준일: ' + p.dateNote : '') : '실제 사건이 아니라 AI가 보완한 예시 문구입니다';
+    note.textContent = text; note.hidden = !text;
+  }
+
+  // ----- 조건 바꾸기: state만 바꾸고 renderList 호출 -----
+  $('search-form').addEventListener('submit', function (e) { e.preventDefault(); state.search = $('query').value.trim(); renderList(true); });
+  $('query').addEventListener('search', function () { state.search = $('query').value.trim(); renderList(true); });   // ✕로 지울 때
+  $('type-filters').addEventListener('click', function (e) {
+    var c = e.target.closest('.chip'); if (!c) return;
+    state.type = c.dataset.type; renderList(true);
   });
+  $('real-only').addEventListener('change', function (e) { state.realOnly = e.target.checked; renderList(true); });
+  $('sort').addEventListener('change', function (e) { state.sort = e.target.value; renderList(true); });
+  function resetAll() { state = defaultState(); $('query').value = ''; renderList(true); }
+  $('btn-reset-all').addEventListener('click', resetAll);
+  $('btn-reset').addEventListener('click', resetAll);
+  $('btn-load-more').addEventListener('click', function () { shown += PAGE_SIZE; renderList(false); });
+
+  loadData();
 
   show(currentName());
 })();
