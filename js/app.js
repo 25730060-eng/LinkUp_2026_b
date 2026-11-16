@@ -122,16 +122,17 @@
 
   // ----- 유형 필터 (사례 목록·마이페이지 공통) -----
   // 칩(data-type)을 누르면 카드(data-type)를 거르고, 건수와 '결과 없음' 영역을 갱신
+  var applyFns = {};
   function setupTypeFilter(cfg) {
     var screen = document.getElementById(cfg.screenId);
     var chips = screen.querySelectorAll('.chip[data-type]');
-    var cards = document.getElementById(cfg.listId).querySelectorAll('.case-card');
     var countEl = document.getElementById(cfg.countId);
     var emptyEl = document.getElementById(cfg.emptyId);
     var listEl = document.getElementById(cfg.listId);
 
     function apply(type) {
       var visible = 0;
+      var cards = document.getElementById(cfg.listId).querySelectorAll('.case-card');   // 삭제 후에도 최신 카드 기준
       chips.forEach(function (c) {
         c.setAttribute('aria-pressed', c.dataset.type === type ? 'true' : 'false');
       });
@@ -141,9 +142,16 @@
         if (show) visible++;
       });
       countEl.textContent = visible;
-      emptyEl.hidden = visible !== 0;
+      var none = cfg.noneId ? document.getElementById(cfg.noneId) : null;
+      var empty = cards.length === 0;                  // 저장이 하나도 없을 때는 '저장 없음' 안내
+      if (none) none.hidden = !empty;
+      emptyEl.hidden = empty || visible !== 0;
       listEl.hidden = visible === 0;
     }
+    applyFns[cfg.screenId] = function () {
+      var p = screen.querySelector('.chip[data-type][aria-pressed="true"]');
+      apply(p ? p.dataset.type : '');
+    };
 
     chips.forEach(function (c) {
       c.addEventListener('click', function () { apply(c.dataset.type); });
@@ -157,7 +165,16 @@
   }
 
   setupTypeFilter({ screenId: 'screen-saved', listId: 'saved-case-list', countId: 'saved-count-num',
-                    emptyId: 'state-saved-filter-empty', resetIds: ['btn-saved-all'] });
+                    emptyId: 'state-saved-filter-empty', noneId: 'state-saved-empty', resetIds: ['btn-saved-all'] });
+
+  // 마이페이지: 휴지통 버튼으로 저장한 사례 삭제 (지금은 화면에서만 지움. 저장소 연결은 11주차)
+  document.getElementById('saved-case-list').addEventListener('click', function (e) {
+    var del = e.target.closest('.btn-delete');
+    if (!del) return;
+    var card = del.closest('.case-card');
+    if (card) card.remove();
+    applyFns['screen-saved']();
+  });
 
 
   // =====================================================================
@@ -315,11 +332,11 @@
     if (p.sourceUrl && /^https:\/\//.test(p.sourceUrl)) li.dataset.sourceUrl = p.sourceUrl;
     li.querySelector('.case-type-name').textContent = typeName[p.typeId] || p.typeId;
     li.querySelector('.origin-tag').hidden = p.isReal === true;
-    li.querySelector('.case-title').textContent = p.title;
+    li.querySelector('.case-link').textContent = p.title;
     li.querySelector('.case-source').textContent = p.source || (p.isReal ? '출처 확인 중' : 'AI 보완 · 출처 없음');
     var t = li.querySelector('.case-date'); t.textContent = dateText(p);
     if (p.sourceBasisDate) t.setAttribute('datetime', p.sourceBasisDate);
-    li.querySelector('.btn-open').dataset.id = p.id;
+    li.querySelectorAll('.btn-open').forEach(function (b) { b.dataset.id = p.id; });
     return li;
   }
 
