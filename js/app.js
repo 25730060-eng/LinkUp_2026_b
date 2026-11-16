@@ -164,7 +164,7 @@
   var state = defaultState();
   var shown = PAGE_SIZE;                                 // 지금 화면에 보여줄 건수
 
-  function defaultState() { return { search: '', type: '', realOnly: true, sort: 'latest' }; }
+  function defaultState() { return { search: '', type: '', filters: [], realOnly: true, sort: 'latest' }; }
   function $(id) { return document.getElementById(id); }
   function findCase(id) { for (var i = 0; i < cases.length; i++) if (cases[i].id === id) return cases[i]; return null; }
   function norm(t) { return String(t || '').replace(/\s/g, '').toLowerCase(); }
@@ -254,16 +254,43 @@
   };
   function typeIndex(id) { for (var i = 0; i < types.length; i++) if (types[i].typeId === id) return i; return 99; }
 
-  function results() {
-    var q = norm(state.search);
+  // 필터 규칙표: 조건 버튼 ↔ 사용하는 필드 ↔ 통과 조건 (여러 개를 고르면 모두 만족해야 함 = AND)
+  var FILTER_RULES = {
+    money: function (p) { return (p.demandTags || []).indexOf('money') !== -1; },   // 돈·송금 요구 (demandTags, 가공)
+    app:   function (p) { return (p.demandTags || []).indexOf('app') !== -1; },     // 앱·원격 설치 요구 (demandTags, 가공)
+    info:  function (p) { return (p.demandTags || []).indexOf('info') !== -1; },    // 신분증·카드·인증 정보 요구 (demandTags, 가공)
+    link:  function (p) { return /^https:\/\//.test(p.sourceUrl || ''); }            // 출처 링크 있음 (sourceUrl, 조사)
+  };
+  var FILTER_LABELS = { money: '돈·송금 요구', app: '앱·원격 설치 요구', info: '신분증·카드·인증 정보 요구', link: '출처 링크 있음' };
+  var KEYWORD_FILTERS = ['money', 'app', 'info'];        // 문장 속 단어로 분류한 조건(정확하지 않을 수 있음)
+
+  // s 에 조건 상태를 넘기면 그 조건으로 계산 (기본은 현재 state) — '해제하면 몇 건' 계산에도 같은 함수를 씀
+  function results(s) {
+    s = s || state;
+    var q = norm(s.search);
     return cases.filter(function (p) {
-      return (!state.realOnly || p.isReal === true) &&
-             (!state.type || p.typeId === state.type) &&
-             (!q || norm(p.title + p.summary).indexOf(q) !== -1);
-    }).sort(SORTERS[state.sort] || SORTERS.latest);      // filter가 만든 새 배열을 정렬하므로 원본 cases는 그대로
+      return (!s.realOnly || p.isReal === true) &&
+             (!s.type || p.typeId === s.type) &&
+             (!q || norm(p.title + p.summary).indexOf(q) !== -1) &&
+             s.filters.every(function (f) { return (FILTER_RULES[f] || function () { return true; })(p); });
+    }).sort(SORTERS[s.sort] || SORTERS.latest);          // filter가 만든 새 배열을 정렬하므로 원본 cases는 그대로
   }
   function activeCount() {
-    return (state.search ? 1 : 0) + (state.type ? 1 : 0) + (state.realOnly ? 1 : 0);
+    return (state.search ? 1 : 0) + (state.type ? 1 : 0) + state.filters.length + (state.realOnly ? 1 : 0);
+  }
+
+  // 0건일 때: 조건을 하나씩 빼 보고, 가장 많은 사례가 나오는 해제 후보를 찾음
+  function relaxOption() {
+    var tries = [];
+    state.filters.forEach(function (f) {
+      tries.push({ label: FILTER_LABELS[f], next: Object.assign({}, state, { filters: state.filters.filter(function (x) { return x !== f; }) }) });
+    });
+    if (state.type) tries.push({ label: typeName[state.type], next: Object.assign({}, state, { type: '' }) });
+    if (state.search) tries.push({ label: "검색어 '" + state.search + "'", next: Object.assign({}, state, { search: '' }) });
+    if (state.realOnly) tries.push({ label: '실제 사례만 보기', next: Object.assign({}, state, { realOnly: false }) });
+    var best = null;
+    tries.forEach(function (t) { t.count = results(t.next).length; if (t.count && (!best || t.count > best.count)) best = t; });
+    return best;
   }
 
   // ----- 카드 만들기 (목록·홈 공통) -----
@@ -293,9 +320,19 @@
     var n = activeCount();
     $('result-count').textContent = arr.length;
     $('filter-count').textContent = n ? '· 조건 ' + n + '개 적용' : '';
-    $('btn-reset-all').disabled = !(state.search || state.type || !state.realOnly || state.sort !== 'latest');
+    $('btn-reset-all').disabled = !(state.search || state.type || state.filters.length || !state.realOnly || state.sort !== 'latest');
     list.hidden = arr.length === 0;
     $('state-empty').hidden = arr.length !== 0;
+    if (arr.length === 0) {                              // 결과 없음: 이유 + 다음 행동(조건 해제 제안·전체 초기화)
+      var r = relaxOption(), btn = $('btn-relax');
+      $('empty-reason').textContent = n > 1 ? '조건이 많아 맞는 사례가 없습니다' : '이 조건에 맞는 사례가 없습니다';
+      btn.hidden = !r;
+      if (r) { btn.textContent = r.label + ' 해제하면 ' + r.count + '건 보기'; btn.onclick = function () { state = r.next; $('query').value = state.search; renderList(true); }; }
+    }
+    var notes = [];                                      // 데이터 구분 안내: 조건을 바꿔도 사라지지 않게 매번 다시 계산
+    if (!state.realOnly) notes.push("AI가 보완한 예시 문구가 포함되어 있습니다. 실제 사건이 아니며 카드의 'AI 보완' 표시로 구분됩니다.");
+    if (state.filters.some(function (f) { return KEYWORD_FILTERS.indexOf(f) !== -1; })) notes.push("'요구' 조건은 문장 속 단어로 분류한 값이라 정확하지 않을 수 있습니다.");
+    $('list-notice').textContent = notes.join(' '); $('list-notice').hidden = !notes.length;
     var more = $('btn-load-more');
     more.hidden = arr.length <= shown;
     more.textContent = '더 보기 (' + Math.min(shown, arr.length) + ' / ' + arr.length + ')';
@@ -307,6 +344,9 @@
     document.querySelectorAll('#type-filters .chip').forEach(function (c) {
       c.setAttribute('aria-pressed', c.dataset.type === state.type ? 'true' : 'false');
     });
+    document.querySelectorAll('#cond-filters .chip').forEach(function (c) {      // 조건 버튼 표시는 state.filters 를 보고 다시 그림
+      c.setAttribute('aria-pressed', state.filters.indexOf(c.dataset.filter) !== -1 ? 'true' : 'false');
+    });
   }
   function buildTypeChips() {
     var box = $('type-filters'); box.replaceChildren();
@@ -314,6 +354,12 @@
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'chip'; b.dataset.type = t.typeId; b.textContent = t.typeName;
       box.appendChild(b);
+    });
+    var cond = $('cond-filters'); cond.replaceChildren();
+    Object.keys(FILTER_RULES).forEach(function (f) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip'; b.dataset.filter = f; b.textContent = FILTER_LABELS[f];
+      cond.appendChild(b);
     });
   }
 
@@ -350,6 +396,12 @@
   $('type-filters').addEventListener('click', function (e) {
     var c = e.target.closest('.chip'); if (!c) return;
     state.type = c.dataset.type; renderList(true);
+  });
+  $('cond-filters').addEventListener('click', function (e) {     // 토글: 켜져 있으면 빼고, 없으면 추가
+    var c = e.target.closest('.chip'); if (!c) return;
+    var f = c.dataset.filter;
+    state.filters = state.filters.indexOf(f) !== -1 ? state.filters.filter(function (x) { return x !== f; }) : state.filters.concat(f);
+    renderList(true);
   });
   $('real-only').addEventListener('change', function (e) { state.realOnly = e.target.checked; renderList(true); });
   $('sort').addEventListener('change', function (e) { state.sort = e.target.value; renderList(true); });
