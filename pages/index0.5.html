@@ -370,6 +370,40 @@ body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
 .hotline .btn,.hotline-links>.btn{background:#fff;color:var(--alert-dark)}
 #result-found .hotline-links>.btn{background:var(--alert);color:#fff}
 
+/* 11/16 아이콘·글자 설정·페이지 번호 */
+body[data-fs="1"]{zoom:1.12}
+body[data-fs="2"]{zoom:1.25}
+#hotline{background:var(--cream);color:var(--ink);border:1.5px solid var(--rule);padding:14px 16px}
+#hotline .hotline-head{display:flex;align-items:center;gap:12px}
+.alert-ico{flex:none;width:48px;height:48px;border-radius:10px;background:var(--alert);display:flex;align-items:center;justify-content:center}
+#hotline .hotline-title{color:var(--alert);font-size:20px}
+#hotline .hotline-links{flex-direction:column}
+#hotline .btn{background:#fff;color:var(--alert);border:1.5px solid var(--alert);box-shadow:none}
+#hotline .notice-small{color:var(--sub);font-size:14px;font-weight:500}
+.fs-wrap{position:relative;flex:none}
+.btn-font{min-height:44px;min-width:44px;padding:0 10px;gap:4px;font-size:17px}
+.btn-font .chev{font-size:14px}
+.font-menu{position:absolute;left:0;top:50px;z-index:40;min-width:150px;background:#fff;border:1.5px solid var(--steel);border-radius:10px;padding:6px;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.font-menu[hidden]{display:none}
+.font-menu button{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:0 10px;border:0;border-radius:8px;background:#fff;color:var(--ink);font-size:16px;font-weight:600;text-align:left;cursor:pointer}
+.font-menu button b{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:6px;background:var(--cream);border:1px solid var(--rule);color:var(--steel)}
+.font-menu button b.big{font-size:20px}
+.font-menu button[aria-checked="true"]{background:var(--cream)}
+.font-menu button[aria-checked="true"] b{background:var(--steel);color:#fff}
+.pager{display:flex;justify-content:center;gap:8px;margin:18px 0 8px}
+.pager[hidden]{display:none}
+.pager .pg{min-width:44px;min-height:44px;padding:0 12px;border:0;border-radius:8px;background:var(--cream);color:var(--ink);font-size:16px;font-weight:700;cursor:pointer}
+.pager .pg[aria-current="page"]{background:var(--steel);color:#fff}
+.pager .pg:disabled{opacity:.4;cursor:default}
+
+/* 11/16 기호 버튼 축소 */
+.icon-open,.btn-delete.icon-open{width:36px;height:36px}
+.icon-link{width:40px;height:40px;font-size:20px}
+.sort-row .btn-reset{min-width:40px;width:40px;min-height:40px;font-size:20px}
+.btn-font{min-height:40px;min-width:40px}
+.btn-font .chev{font-size:12px}
+.font-menu{top:46px}
+
 </style>
 </head>
 <body>
@@ -418,7 +452,7 @@ body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
       </section>
 
       <section id="hotline" class="hotline" aria-label="긴급 신고처">
-        <h2 class="hotline-title">긴급 신고</h2>
+        <div class="hotline-head"><span class="alert-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18v-6a5 5 0 0 1 10 0v6"/><path d="M5 21h14"/><path d="M12 3v1.5M4.5 6l1 1M19.5 6l-1 1M2.5 12H4M20 12h1.5"/></svg></span><h2 class="hotline-title">긴급 신고</h2></div>
         <div class="hotline-links">
           <a class="btn" href="tel:112">경찰청 112</a>
           <a class="btn" href="tel:1332">금융감독원 1332</a>
@@ -546,6 +580,12 @@ body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
 
         <div class="sort-row">
           <p class="result-count" aria-live="polite"><strong><span id="result-count">0</span>건</strong> <span id="filter-count" class="filter-note"></span></p>
+          <div class="fs-wrap"><button id="btn-font" type="button" class="btn btn-font" aria-haspopup="true" aria-expanded="false" aria-label="글자 설정"><b>가</b><span class="chev">▾</span></button>
+            <div id="font-menu" class="font-menu" role="menu" hidden>
+              <button type="button" role="menuitemradio" data-fs="0"><b>가</b> 기본</button>
+              <button type="button" role="menuitemradio" data-fs="1"><b>가</b> 조금 크게</button>
+              <button type="button" role="menuitemradio" data-fs="2"><b class="big">가</b> 크게</button>
+            </div></div>
           <button id="btn-reset-all" type="button" class="btn btn-reset" aria-label="조건 초기화">↺</button>
           <label for="sort" class="visually-hidden">정렬</label>
           <select id="sort" class="select">
@@ -578,13 +618,13 @@ body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
 
       <!-- 카드 목록: data/cases_all.json 을 불러와 template#case-card-tpl 로 만들어 채웁니다 -->
       <ul id="case-list" class="card-list" hidden></ul>
-      <button id="btn-load-more" type="button" class="btn btn-wide" aria-label="사례 더 불러오기" hidden>＋</button>
+      <nav id="pager" class="pager" aria-label="페이지 이동" hidden></nav>
       <template id="case-card-tpl">
         <li class="case-card" data-id="" data-type="">
           <p class="case-type"><span class="case-type-name" data-field="typeId"></span> <span class="origin-tag" hidden>AI 보완</span></p>
           <div class="case-row">
             <h3 class="case-title"><button type="button" class="btn-open case-link" data-id="" data-field="title"></button></h3>
-            <button type="button" class="btn-open icon-open" data-id="" aria-label="자세히 보기">›</button>
+            <button type="button" class="btn-open icon-open" data-id="" aria-label="자세히 보기"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></button>
           </div>
           <p class="case-meta"><span class="case-source" data-field="source"></span> · <time class="case-date" data-field="sourceBasisDate"></time></p>
         </li>
@@ -647,7 +687,7 @@ body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
     </header>
 
     <main class="screen-body">
-      <h2 id="saved-title" class="page-title">마이페이지</h2>
+      <h2 id="saved-title" class="page-title">마이</h2>
 
       <div class="filters">
         <p id="saved-type-filter-label" class="filter-label">유형</p>
@@ -665,8 +705,8 @@ body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
           <div class="case-row">
             <h3 class="case-title"><button type="button" class="btn-open case-link" data-id="2" data-field="title">손주 사칭 급전 송금 요구</button></h3>
             <div class="row-actions">
-              <button type="button" class="btn-open icon-open" data-id="2" aria-label="자세히 보기">›</button>
-              <button type="button" class="btn-delete icon-open" data-id="2" aria-label="저장 삭제"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12h10l1-12M9 7V4h6v3"/></svg></button>
+              <button type="button" class="btn-open icon-open" data-id="2" aria-label="자세히 보기"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></button>
+              <button type="button" class="btn-delete icon-open" data-id="2" aria-label="저장 삭제"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12h10l1-12M9 7V4h6v3"/></svg></button>
             </div>
           </div>
           <p class="case-meta"><span class="case-source" data-field="source">경찰청</span> · <time class="case-date" data-field="collectedAt" datetime="2026-09-15">2026-09-15</time></p>
@@ -676,8 +716,8 @@ body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
           <div class="case-row">
             <h3 class="case-title"><button type="button" class="btn-open case-link" data-id="4" data-field="title">금융기관 직원 사칭 계좌 이체 유도</button></h3>
             <div class="row-actions">
-              <button type="button" class="btn-open icon-open" data-id="4" aria-label="자세히 보기">›</button>
-              <button type="button" class="btn-delete icon-open" data-id="4" aria-label="저장 삭제"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12h10l1-12M9 7V4h6v3"/></svg></button>
+              <button type="button" class="btn-open icon-open" data-id="4" aria-label="자세히 보기"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></button>
+              <button type="button" class="btn-delete icon-open" data-id="4" aria-label="저장 삭제"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12h10l1-12M9 7V4h6v3"/></svg></button>
             </div>
           </div>
           <p class="case-meta"><span class="case-source" data-field="source">금융감독원</span> · <time class="case-date" data-field="collectedAt" datetime="2026-09-10">2026-09-10</time></p>
@@ -699,8 +739,8 @@ body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
   <!-- ===== 공통 하단 탭바: 1단계 화면(홈·사례·마이페이지)에서만 표시 ===== -->
   <nav id="tabbar" class="tabbar" aria-label="주 메뉴">
     <a class="tab" data-tab="home" href="#home" aria-current="page"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V10a6 6 0 0 1 12 0v11zM15 14.5v1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>홈</span></a>
-    <a class="tab" data-tab="cases" href="#cases"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7h11M8 12h11M8 17h11M4.5 7h.01M4.5 12h.01M4.5 17h.01" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>사례</span></a>
-    <a class="tab" data-tab="saved" href="#saved"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>마이페이지</span></a>
+    <a class="tab" data-tab="cases" href="#cases"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7z M14 3v4h4 M9 12h6 M9 16h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>사례</span></a>
+    <a class="tab" data-tab="saved" href="#saved"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>마이</span></a>
   </nav>
 </div>
 <script>
@@ -897,7 +937,7 @@ body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
   var types = [];                                        // [{typeId, typeName}]
   var typeName = {};                                     // typeId → 표시 이름
   var state = defaultState();
-  var shown = PAGE_SIZE;                                 // 지금 화면에 보여줄 건수
+  var page = 1;                                          // 현재 페이지
 
   function defaultState() { return { search: '', type: '', filters: [], realOnly: true, sort: 'latest' }; }
   function $(id) { return document.getElementById(id); }
@@ -973,7 +1013,7 @@ body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
     $('state-home-error').hidden = !on;
     $('home-case-list').hidden = on;
     $('home-cases').hidden = on;
-    if (on) { $('case-list').hidden = true; $('btn-load-more').hidden = true; $('state-empty').hidden = true; $('result-count').textContent = '0'; }
+    if (on) { $('case-list').hidden = true; $('pager').hidden = true; $('state-empty').hidden = true; $('result-count').textContent = '0'; }
   }
   $('btn-retry').addEventListener('click', loadData);
   $('btn-home-retry').addEventListener('click', loadData);
@@ -1048,11 +1088,13 @@ body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
 
   // ----- 목록 그리기 -----
   function renderList(reset) {
-    if (reset) shown = PAGE_SIZE;
+    if (reset) page = 1;
     var arr = results();
+    var pages = Math.max(1, Math.ceil(arr.length / PAGE_SIZE));
+    if (page > pages) page = pages;
     var list = $('case-list');
     list.replaceChildren();
-    arr.slice(0, shown).forEach(function (p) { list.appendChild(makeCard(p)); });
+    arr.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE).forEach(function (p) { list.appendChild(makeCard(p)); });
 
     var n = activeCount();
     $('result-count').textContent = arr.length;
@@ -1072,10 +1114,23 @@ body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
     if (!state.realOnly) notes.push("'AI 보완' 표시가 있는 카드는 실제 사건이 아닌 예시입니다.");
     if (state.filters.some(function (f) { return KEYWORD_FILTERS.indexOf(f) !== -1; })) notes.push("'요구' 조건은 단어 기준 분류라 정확하지 않을 수 있습니다.");
     $('list-notice').textContent = notes.join(' '); $('list-notice').hidden = !notes.length;
-    var more = $('btn-load-more');
-    more.hidden = arr.length <= shown;
-    more.textContent = '＋  ' + Math.min(shown, arr.length) + ' / ' + arr.length;
+    renderPager(pages);
     syncControls();
+  }
+  function renderPager(pages) {
+    var nav = $('pager'); nav.replaceChildren(); nav.hidden = pages <= 1; if (pages <= 1) return;
+    function add(label, p, cls, aria) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'pg ' + (cls || ''); b.textContent = label;
+      if (aria) b.setAttribute('aria-label', aria);
+      if (p === page && !cls) b.setAttribute('aria-current', 'page');
+      if (cls && (p < 1 || p > pages)) b.disabled = true;
+      b.addEventListener('click', function () { page = p; renderList(false); window.scrollTo(0, 0); });
+      nav.appendChild(b);
+    }
+    add('‹ 이전', page - 1, 'pg-nav', '이전 페이지');
+    var a = Math.max(1, Math.min(page - 1, pages - 2)), z = Math.min(pages, a + 2);
+    for (var i = a; i <= z; i++) add(String(i), i, '', i + '페이지');
+    add('다음 ›', page + 1, 'pg-nav', '다음 페이지');
   }
   function syncControls() {
     $('real-only').checked = state.realOnly;
@@ -1160,7 +1215,22 @@ body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
     this.setAttribute('aria-expanded', open ? 'true' : 'false');
     this.querySelector('.chev').textContent = open ? '▴' : '▾';
   });
-  $('btn-load-more').addEventListener('click', function () { shown += PAGE_SIZE; renderList(false); });
+  // 글자 설정 (기본 / 조금 크게 / 크게)
+  function applyFs(n) {
+    document.body.setAttribute('data-fs', n);
+    Array.prototype.forEach.call(document.querySelectorAll('#font-menu button'), function (b) { b.setAttribute('aria-checked', String(b.getAttribute('data-fs') === String(n))); });
+    try { localStorage.setItem('fs', n); } catch (e) {}
+  }
+  var fsInit = '0'; try { fsInit = localStorage.getItem('fs') || '0'; } catch (e) {}
+  applyFs(fsInit);
+  $('btn-font').addEventListener('click', function (e) {
+    e.stopPropagation(); var m = $('font-menu'); m.hidden = !m.hidden; this.setAttribute('aria-expanded', String(!m.hidden));
+  });
+  $('font-menu').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-fs]'); if (!b) return;
+    applyFs(b.getAttribute('data-fs')); this.hidden = true; $('btn-font').setAttribute('aria-expanded', 'false');
+  });
+  document.addEventListener('click', function () { $('font-menu').hidden = true; $('btn-font').setAttribute('aria-expanded', 'false'); });
 
   loadData();
 
