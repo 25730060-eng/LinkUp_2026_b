@@ -361,3 +361,37 @@ body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
 .door .btn.btn-primary{background:#fff;color:var(--steel);border-color:#fff}
 .hotline .btn,.hotline-links>.btn{background:#fff;color:var(--alert-dark)}
 #result-found .hotline-links>.btn{background:var(--alert);color:#fff}
+
+/* 11/16 아이콘·글자 설정·페이지 번호 */
+body[data-fs="1"]{zoom:1.12}
+body[data-fs="2"]{zoom:1.25}
+#hotline{background:var(--cream);color:var(--ink);border:1.5px solid var(--rule);padding:14px 16px}
+#hotline .hotline-head{display:flex;align-items:center;gap:12px}
+.alert-ico{flex:none;width:48px;height:48px;border-radius:10px;background:var(--alert);display:flex;align-items:center;justify-content:center}
+#hotline .hotline-title{color:var(--alert);font-size:20px}
+#hotline .hotline-links{flex-direction:column}
+#hotline .btn{background:#fff;color:var(--alert);border:1.5px solid var(--alert);box-shadow:none}
+#hotline .notice-small{color:var(--sub);font-size:14px;font-weight:500}
+.fs-wrap{position:relative;flex:none}
+.btn-font{min-height:44px;min-width:44px;padding:0 10px;gap:4px;font-size:17px}
+.btn-font .chev{font-size:14px}
+.font-menu{position:absolute;left:0;top:50px;z-index:40;min-width:150px;background:#fff;border:1.5px solid var(--steel);border-radius:10px;padding:6px;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.font-menu[hidden]{display:none}
+.font-menu button{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:0 10px;border:0;border-radius:8px;background:#fff;color:var(--ink);font-size:16px;font-weight:600;text-align:left;cursor:pointer}
+.font-menu button b{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:6px;background:var(--cream);border:1px solid var(--rule);color:var(--steel)}
+.font-menu button b.big{font-size:20px}
+.font-menu button[aria-checked="true"]{background:var(--cream)}
+.font-menu button[aria-checked="true"] b{background:var(--steel);color:#fff}
+.pager{display:flex;justify-content:center;gap:8px;margin:18px 0 8px}
+.pager[hidden]{display:none}
+.pager .pg{min-width:44px;min-height:44px;padding:0 12px;border:0;border-radius:8px;background:var(--cream);color:var(--ink);font-size:16px;font-weight:700;cursor:pointer}
+.pager .pg[aria-current="page"]{background:var(--steel);color:#fff}
+.pager .pg:disabled{opacity:.4;cursor:default}
+
+/* 11/16 기호 버튼 축소 */
+.icon-open,.btn-delete.icon-open{width:36px;height:36px}
+.icon-link{width:40px;height:40px;font-size:20px}
+.sort-row .btn-reset{min-width:40px;width:40px;min-height:40px;font-size:20px}
+.btn-font{min-height:40px;min-width:40px}
+.btn-font .chev{font-size:12px}
+.font-menu{top:46px}
