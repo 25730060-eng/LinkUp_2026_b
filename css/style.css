@@ -294,3 +294,22 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .filter-panel[hidden]{display:none}
 .filter-panel .filter-label{margin:2px 0 0}
 #btn-load-more{font-size:20px}
+
+/* ===== 카드 한 줄 구성(제목 + › 버튼), 마이페이지 삭제, 검색 줄 필터 버튼 ===== */
+.page-title{font-size:22px;font-weight:800;margin:0}
+.case-card{gap:4px;padding:14px 0}
+.case-row{display:flex;align-items:center;gap:10px}
+.case-title{flex:1 1 auto;min-width:0;font-size:18px;font-weight:800;line-height:1.4;margin:0}
+.case-link{display:block;width:100%;padding:6px 0;border:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.case-link:hover,.case-link:focus-visible{text-decoration:underline}
+.row-actions{display:flex;gap:6px;flex:none}
+.icon-open{flex:none;display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1.5px solid var(--steel);border-radius:50%;background:var(--paper);color:var(--steel);font-size:26px;line-height:1;font-weight:700;cursor:pointer}
+.btn-delete.icon-open{border-color:var(--alert);color:var(--alert)}
+.case-meta{font-size:15px}
+.case-type{font-size:15px}
+.search-row .btn-filter{flex:none;min-width:0;gap:6px;padding:6px 12px;justify-content:center}
+.search-row .btn-filter .chev{margin-left:0}
+.sort-row{gap:8px}
+.sort-row .result-count{flex:1 1 auto;min-width:0;font-size:17px}
+.sort-row .btn-reset{flex:none;min-width:44px;width:44px;padding:0;font-size:22px}
+.sort-row .select{flex:0 0 118px;min-width:0}
