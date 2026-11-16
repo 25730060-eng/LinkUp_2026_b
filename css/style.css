@@ -259,3 +259,17 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .hero .btn-primary{text-decoration:none;margin-top:6px}
 .hero .privacy-note{margin-top:2px}
 #home-cases .btn-wide{margin-top:12px}
+
+/* ===== 9주차: 탐색 영역(검색·유형·보기 조건·초기화·정렬) ===== */
+.search-row{display:flex;gap:8px;align-items:stretch}
+.search-row .input-line{flex:1 1 auto;min-width:0}
+.search-row .btn{flex:none;min-width:72px}
+.option-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.check-row{display:flex;align-items:center;gap:8px;min-height:44px;font-weight:700;font-size:17px;color:var(--ink);cursor:pointer}
+.check-row input{width:22px;height:22px;accent-color:var(--steel)}
+.btn-reset{min-height:44px;padding:0 14px}
+.btn-reset:disabled{opacity:.45;cursor:default}
+.filter-note{font-size:15px;color:var(--sub);font-weight:400}
+.sort-row{padding-top:8px;border-top:1px solid var(--rule)}
+.origin-tag{display:inline-block;margin-left:6px;padding:1px 8px;font-size:14px;font-weight:700;color:var(--alert);background:var(--alert-soft);border-radius:10px}
+#btn-load-more{margin-top:12px}
