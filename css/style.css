@@ -273,3 +273,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .sort-row{padding-top:8px;border-top:1px solid var(--rule)}
 .origin-tag{display:inline-block;margin-left:6px;padding:1px 8px;font-size:14px;font-weight:700;color:var(--alert);background:var(--alert-soft);border-radius:10px}
 #btn-load-more{margin-top:12px}
+.filter-hint{font-size:14px;font-weight:400;color:var(--sub)}
+#list-notice{margin:8px 0}
+#btn-relax{white-space:normal;text-align:center}
