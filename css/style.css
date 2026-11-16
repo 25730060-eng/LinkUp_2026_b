@@ -349,3 +349,15 @@ body{font-size:16px}
 :root{--tab-h:60px}
 .input-area,.input-line,.select{font-size:16px}
 #btn-load-more{font-size:17px}
+
+/* 11/16 색상 정리: 배경 흰색, 버튼은 기존 크림색 */
+:root{--frame:#fff;--cream:#FBF7EC}
+body,#app,.app-header,.tabbar,.bottom-bar{background:#fff}
+.btn,.chip,.btn-filter,.icon-open,.icon-link,.btn-reset{background:var(--cream)}
+.btn.btn-primary{background:var(--cream);color:var(--steel);border-color:var(--steel)}
+.chip[aria-pressed="true"]{background:var(--steel);color:#fff}
+.btn:disabled,.btn.btn-primary:disabled{background:#EFE6D0;color:#7a6755;border-color:#EFE6D0}
+.door .btn{background:transparent;color:#fff}
+.door .btn.btn-primary{background:#fff;color:var(--steel);border-color:#fff}
+.hotline .btn,.hotline-links>.btn{background:#fff;color:var(--alert-dark)}
+#result-found .hotline-links>.btn{background:var(--alert);color:#fff}
