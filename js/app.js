@@ -191,7 +191,7 @@
   var types = [];                                        // [{typeId, typeName}]
   var typeName = {};                                     // typeId → 표시 이름
   var state = defaultState();
-  var shown = PAGE_SIZE;                                 // 지금 화면에 보여줄 건수
+  var page = 1;                                          // 현재 페이지
 
   function defaultState() { return { search: '', type: '', filters: [], realOnly: true, sort: 'latest' }; }
   function $(id) { return document.getElementById(id); }
@@ -267,7 +267,7 @@
     $('state-home-error').hidden = !on;
     $('home-case-list').hidden = on;
     $('home-cases').hidden = on;
-    if (on) { $('case-list').hidden = true; $('btn-load-more').hidden = true; $('state-empty').hidden = true; $('result-count').textContent = '0'; }
+    if (on) { $('case-list').hidden = true; $('pager').hidden = true; $('state-empty').hidden = true; $('result-count').textContent = '0'; }
   }
   $('btn-retry').addEventListener('click', loadData);
   $('btn-home-retry').addEventListener('click', loadData);
@@ -342,11 +342,13 @@
 
   // ----- 목록 그리기 -----
   function renderList(reset) {
-    if (reset) shown = PAGE_SIZE;
+    if (reset) page = 1;
     var arr = results();
+    var pages = Math.max(1, Math.ceil(arr.length / PAGE_SIZE));
+    if (page > pages) page = pages;
     var list = $('case-list');
     list.replaceChildren();
-    arr.slice(0, shown).forEach(function (p) { list.appendChild(makeCard(p)); });
+    arr.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE).forEach(function (p) { list.appendChild(makeCard(p)); });
 
     var n = activeCount();
     $('result-count').textContent = arr.length;
@@ -366,10 +368,23 @@
     if (!state.realOnly) notes.push("'AI 보완' 표시가 있는 카드는 실제 사건이 아닌 예시입니다.");
     if (state.filters.some(function (f) { return KEYWORD_FILTERS.indexOf(f) !== -1; })) notes.push("'요구' 조건은 단어 기준 분류라 정확하지 않을 수 있습니다.");
     $('list-notice').textContent = notes.join(' '); $('list-notice').hidden = !notes.length;
-    var more = $('btn-load-more');
-    more.hidden = arr.length <= shown;
-    more.textContent = '＋  ' + Math.min(shown, arr.length) + ' / ' + arr.length;
+    renderPager(pages);
     syncControls();
+  }
+  function renderPager(pages) {
+    var nav = $('pager'); nav.replaceChildren(); nav.hidden = pages <= 1; if (pages <= 1) return;
+    function add(label, p, cls, aria) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'pg ' + (cls || ''); b.textContent = label;
+      if (aria) b.setAttribute('aria-label', aria);
+      if (p === page && !cls) b.setAttribute('aria-current', 'page');
+      if (cls && (p < 1 || p > pages)) b.disabled = true;
+      b.addEventListener('click', function () { page = p; renderList(false); window.scrollTo(0, 0); });
+      nav.appendChild(b);
+    }
+    add('‹ 이전', page - 1, 'pg-nav', '이전 페이지');
+    var a = Math.max(1, Math.min(page - 1, pages - 2)), z = Math.min(pages, a + 2);
+    for (var i = a; i <= z; i++) add(String(i), i, '', i + '페이지');
+    add('다음 ›', page + 1, 'pg-nav', '다음 페이지');
   }
   function syncControls() {
     $('real-only').checked = state.realOnly;
@@ -454,7 +469,22 @@
     this.setAttribute('aria-expanded', open ? 'true' : 'false');
     this.querySelector('.chev').textContent = open ? '▴' : '▾';
   });
-  $('btn-load-more').addEventListener('click', function () { shown += PAGE_SIZE; renderList(false); });
+  // 글자 설정 (기본 / 조금 크게 / 크게)
+  function applyFs(n) {
+    document.body.setAttribute('data-fs', n);
+    Array.prototype.forEach.call(document.querySelectorAll('#font-menu button'), function (b) { b.setAttribute('aria-checked', String(b.getAttribute('data-fs') === String(n))); });
+    try { localStorage.setItem('fs', n); } catch (e) {}
+  }
+  var fsInit = '0'; try { fsInit = localStorage.getItem('fs') || '0'; } catch (e) {}
+  applyFs(fsInit);
+  $('btn-font').addEventListener('click', function (e) {
+    e.stopPropagation(); var m = $('font-menu'); m.hidden = !m.hidden; this.setAttribute('aria-expanded', String(!m.hidden));
+  });
+  $('font-menu').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-fs]'); if (!b) return;
+    applyFs(b.getAttribute('data-fs')); this.hidden = true; $('btn-font').setAttribute('aria-expanded', 'false');
+  });
+  document.addEventListener('click', function () { $('font-menu').hidden = true; $('btn-font').setAttribute('aria-expanded', 'false'); });
 
   loadData();
 
