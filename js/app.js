@@ -141,7 +141,7 @@
         card.hidden = !show;
         if (show) visible++;
       });
-      countEl.textContent = visible;
+      if (countEl) countEl.textContent = visible;
       var none = cfg.noneId ? document.getElementById(cfg.noneId) : null;
       var empty = cards.length === 0;                  // 저장이 하나도 없을 때는 '저장 없음' 안내
       if (none) none.hidden = !empty;
