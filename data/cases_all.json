@@ -20,7 +20,11 @@
   "sourceBasisDate": "2026-09-15",
   "collectedAt": "2026-10-19",
   "origin": "직접조사",
-  "isReal": true
+  "isReal": true,
+  "demandTags": [
+   "app",
+   "info"
+  ]
  },
  {
   "id": "c-002",
@@ -43,7 +47,10 @@
   "sourceBasisDate": "2026-09-15",
   "collectedAt": "2026-10-19",
   "origin": "직접조사",
-  "isReal": true
+  "isReal": true,
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "c-003",
@@ -65,7 +72,10 @@
   "sourceBasisDate": "2026-09-15",
   "collectedAt": "2026-10-19",
   "origin": "직접조사",
-  "isReal": true
+  "isReal": true,
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "c-004",
@@ -88,7 +98,11 @@
   "sourceBasisDate": "2026-07-15",
   "collectedAt": "2026-10-19",
   "origin": "직접조사",
-  "isReal": true
+  "isReal": true,
+  "demandTags": [
+   "money",
+   "app"
+  ]
  },
  {
   "id": "c-005",
@@ -111,7 +125,10 @@
   "sourceBasisDate": "2026-09-15",
   "collectedAt": "2026-10-19",
   "origin": "직접조사",
-  "isReal": true
+  "isReal": true,
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "c-006",
@@ -134,7 +151,11 @@
   "sourceBasisDate": "2026-09-15",
   "collectedAt": "2026-10-19",
   "origin": "직접조사",
-  "isReal": true
+  "isReal": true,
+  "demandTags": [
+   "money",
+   "app"
+  ]
  },
  {
   "id": "c-007",
@@ -157,7 +178,12 @@
   "sourceBasisDate": "2026-09-15",
   "collectedAt": "2026-10-19",
   "origin": "직접조사",
-  "isReal": true
+  "isReal": true,
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "c-008",
@@ -180,7 +206,11 @@
   "sourceBasisDate": "2026-07-15",
   "collectedAt": "2026-10-19",
   "origin": "직접조사",
-  "isReal": true
+  "isReal": true,
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "c-009",
@@ -201,7 +231,10 @@
   "sourceBasisDate": "2026-09-15",
   "collectedAt": "2026-10-19",
   "origin": "직접조사",
-  "isReal": true
+  "isReal": true,
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "c-010",
@@ -222,7 +255,10 @@
   "sourceBasisDate": "2026-09-15",
   "collectedAt": "2026-10-19",
   "origin": "직접조사",
-  "isReal": true
+  "isReal": true,
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "c-101",
@@ -247,7 +283,11 @@
   "collectedAt": "2026-11-02",
   "origin": "직접조사",
   "isReal": true,
-  "dateNote": "2021년 4월 안내문 예시"
+  "dateNote": "2021년 4월 안내문 예시",
+  "demandTags": [
+   "app",
+   "info"
+  ]
  },
  {
   "id": "c-102",
@@ -272,7 +312,11 @@
   "collectedAt": "2026-11-02",
   "origin": "직접조사",
   "isReal": true,
-  "dateNote": "2020년 자료 기준(사례 시점 불명)"
+  "dateNote": "2020년 자료 기준(사례 시점 불명)",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "c-103",
@@ -296,7 +340,11 @@
   "collectedAt": "2026-11-02",
   "origin": "직접조사",
   "isReal": true,
-  "dateNote": "2021년 2월"
+  "dateNote": "2021년 2월",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "c-104",
@@ -321,7 +369,11 @@
   "collectedAt": "2026-11-02",
   "origin": "직접조사",
   "isReal": true,
-  "dateNote": "2020년 12월"
+  "dateNote": "2020년 12월",
+  "demandTags": [
+   "app",
+   "info"
+  ]
  },
  {
   "id": "c-105",
@@ -345,7 +397,10 @@
   "collectedAt": "2026-11-02",
   "origin": "직접조사",
   "isReal": true,
-  "dateNote": "2020년 4월"
+  "dateNote": "2020년 4월",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "c-106",
@@ -370,7 +425,11 @@
   "collectedAt": "2026-11-02",
   "origin": "직접조사",
   "isReal": true,
-  "dateNote": "2018년 9월"
+  "dateNote": "2018년 9월",
+  "demandTags": [
+   "money",
+   "app"
+  ]
  },
  {
   "id": "c-107",
@@ -395,7 +454,11 @@
   "collectedAt": "2026-11-02",
   "origin": "직접조사",
   "isReal": true,
-  "dateNote": "2020년 3월"
+  "dateNote": "2020년 3월",
+  "demandTags": [
+   "money",
+   "app"
+  ]
  },
  {
   "id": "c-201",
@@ -418,7 +481,12 @@
   "sourceBasisDate": "2022-05-12",
   "collectedAt": "2026-11-09",
   "origin": "직접조사",
-  "isReal": true
+  "isReal": true,
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "c-302",
@@ -440,7 +508,8 @@
   "collectedAt": "2026-11-09",
   "origin": "직접조사",
   "isReal": true,
-  "note": "본문은 사용자가 붙여 준 연합뉴스 기사 텍스트 기준. 연합뉴스 원문 주소 확인 필요(secondary는 재게시 사이트로 제목 일치만 확인, 열어 보지 않음)"
+  "note": "본문은 사용자가 붙여 준 연합뉴스 기사 텍스트 기준. 연합뉴스 원문 주소 확인 필요(secondary는 재게시 사이트로 제목 일치만 확인, 열어 보지 않음)",
+  "demandTags": []
  },
  {
   "id": "c-303",
@@ -461,7 +530,10 @@
   "collectedAt": "2026-11-09",
   "origin": "직접조사",
   "isReal": true,
-  "note": "본문은 사용자가 붙여 준 연합뉴스 기사 텍스트 기준. 연합뉴스 원문 주소 확인 필요(secondary는 재게시 사이트로 제목 일치만 확인, 열어 보지 않음)"
+  "note": "본문은 사용자가 붙여 준 연합뉴스 기사 텍스트 기준. 연합뉴스 원문 주소 확인 필요(secondary는 재게시 사이트로 제목 일치만 확인, 열어 보지 않음)",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "c-301",
@@ -484,7 +556,10 @@
   "collectedAt": "2026-11-09",
   "origin": "직접조사",
   "isReal": true,
-  "court": "울산지방법원 항소심"
+  "court": "울산지방법원 항소심",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-001",
@@ -507,7 +582,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-002",
@@ -530,7 +608,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-003",
@@ -553,7 +635,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-004",
@@ -576,7 +661,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-005",
@@ -599,7 +687,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-006",
@@ -622,7 +713,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-007",
@@ -645,7 +739,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-008",
@@ -668,7 +766,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-009",
@@ -691,7 +792,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-010",
@@ -714,7 +818,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-011",
@@ -736,7 +843,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-012",
@@ -758,7 +868,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-013",
@@ -780,7 +893,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-014",
@@ -802,7 +918,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-015",
@@ -825,7 +944,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-016",
@@ -848,7 +970,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app"
+  ]
  },
  {
   "id": "s-017",
@@ -871,7 +997,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-018",
@@ -893,7 +1022,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-019",
@@ -915,7 +1047,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-020",
@@ -938,7 +1074,12 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "s-021",
@@ -961,7 +1102,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-022",
@@ -984,7 +1128,8 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": []
  },
  {
   "id": "s-023",
@@ -1007,7 +1152,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-024",
@@ -1030,7 +1179,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-025",
@@ -1053,7 +1206,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-026",
@@ -1076,7 +1232,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-027",
@@ -1099,7 +1258,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-028",
@@ -1122,7 +1284,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-029",
@@ -1145,7 +1311,8 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": []
  },
  {
   "id": "s-030",
@@ -1168,7 +1335,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-031",
@@ -1191,7 +1361,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-032",
@@ -1214,7 +1387,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-033",
@@ -1237,7 +1413,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-034",
@@ -1260,7 +1439,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-035",
@@ -1283,7 +1465,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-036",
@@ -1306,7 +1491,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-037",
@@ -1329,7 +1517,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-038",
@@ -1352,7 +1543,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-039",
@@ -1375,7 +1570,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-040",
@@ -1398,7 +1596,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-041",
@@ -1421,7 +1622,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-042",
@@ -1444,7 +1648,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-043",
@@ -1467,7 +1674,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-044",
@@ -1490,7 +1700,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-045",
@@ -1513,7 +1726,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-046",
@@ -1536,7 +1752,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-047",
@@ -1559,7 +1778,8 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": []
  },
  {
   "id": "s-048",
@@ -1582,7 +1802,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-049",
@@ -1605,7 +1829,8 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": []
  },
  {
   "id": "s-050",
@@ -1628,7 +1853,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-051",
@@ -1651,7 +1879,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-052",
@@ -1674,7 +1905,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-053",
@@ -1697,7 +1931,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-054",
@@ -1720,7 +1957,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-055",
@@ -1743,7 +1983,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-056",
@@ -1766,7 +2009,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-057",
@@ -1790,7 +2037,12 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "s-058",
@@ -1814,7 +2066,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-059",
@@ -1838,7 +2093,12 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "s-060",
@@ -1862,7 +2122,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-061",
@@ -1886,7 +2149,12 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "s-062",
@@ -1910,7 +2178,12 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "s-063",
@@ -1934,7 +2207,12 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "s-064",
@@ -1958,7 +2236,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-065",
@@ -1982,7 +2264,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-066",
@@ -2006,7 +2292,12 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "s-067",
@@ -2030,7 +2321,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-068",
@@ -2054,7 +2348,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-069",
@@ -2078,7 +2375,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-070",
@@ -2102,7 +2402,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-071",
@@ -2126,7 +2429,12 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "s-072",
@@ -2150,7 +2458,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-073",
@@ -2174,7 +2486,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-074",
@@ -2198,7 +2513,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-075",
@@ -2222,7 +2540,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-076",
@@ -2246,7 +2567,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-077",
@@ -2270,7 +2595,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-078",
@@ -2294,7 +2623,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-079",
@@ -2318,7 +2650,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-080",
@@ -2342,7 +2678,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-081",
@@ -2366,7 +2705,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-082",
@@ -2390,7 +2732,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-083",
@@ -2414,7 +2759,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-084",
@@ -2438,7 +2786,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-085",
@@ -2462,7 +2813,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-086",
@@ -2486,7 +2840,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-087",
@@ -2510,7 +2867,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-088",
@@ -2534,7 +2894,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-089",
@@ -2558,7 +2921,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-090",
@@ -2582,7 +2948,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-091",
@@ -2606,7 +2975,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-092",
@@ -2630,7 +3002,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-093",
@@ -2654,7 +3029,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-094",
@@ -2678,7 +3056,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-095",
@@ -2702,7 +3083,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-096",
@@ -2726,7 +3110,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-097",
@@ -2750,7 +3137,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-098",
@@ -2774,7 +3164,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-099",
@@ -2798,7 +3191,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-100",
@@ -2822,7 +3218,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-101",
@@ -2846,7 +3245,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-102",
@@ -2870,7 +3272,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-103",
@@ -2894,7 +3299,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-104",
@@ -2918,7 +3326,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-105",
@@ -2942,7 +3353,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-106",
@@ -2966,7 +3380,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-107",
@@ -2990,7 +3407,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-108",
@@ -3014,7 +3434,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-109",
@@ -3038,7 +3461,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-110",
@@ -3062,7 +3488,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-111",
@@ -3086,7 +3515,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-112",
@@ -3110,7 +3542,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-113",
@@ -3134,7 +3569,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-114",
@@ -3158,7 +3596,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-115",
@@ -3182,7 +3623,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-116",
@@ -3206,7 +3650,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-117",
@@ -3230,7 +3677,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-118",
@@ -3254,7 +3705,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-119",
@@ -3278,7 +3733,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-120",
@@ -3302,7 +3760,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-121",
@@ -3326,7 +3787,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-122",
@@ -3350,7 +3814,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-123",
@@ -3374,7 +3841,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-124",
@@ -3398,7 +3868,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-125",
@@ -3422,7 +3895,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-126",
@@ -3446,7 +3923,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-127",
@@ -3470,7 +3951,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-128",
@@ -3494,7 +3979,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-129",
@@ -3518,7 +4007,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-130",
@@ -3542,7 +4035,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-131",
@@ -3566,7 +4063,12 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "s-132",
@@ -3590,7 +4092,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-133",
@@ -3614,7 +4120,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-134",
@@ -3638,7 +4148,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-135",
@@ -3662,7 +4176,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-136",
@@ -3686,7 +4204,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-137",
@@ -3710,7 +4232,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-138",
@@ -3734,7 +4260,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-139",
@@ -3758,7 +4288,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-140",
@@ -3782,7 +4316,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-141",
@@ -3806,7 +4344,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-142",
@@ -3830,7 +4372,12 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "s-143",
@@ -3854,7 +4401,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-144",
@@ -3878,7 +4429,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-145",
@@ -3902,7 +4457,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-146",
@@ -3926,7 +4485,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-147",
@@ -3950,7 +4513,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-148",
@@ -3974,7 +4541,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-149",
@@ -3998,7 +4569,12 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "s-150",
@@ -4022,7 +4598,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-151",
@@ -4046,7 +4626,12 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "s-152",
@@ -4070,7 +4655,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-153",
@@ -4094,7 +4683,12 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "s-154",
@@ -4118,7 +4712,12 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "app",
+   "info"
+  ]
  },
  {
   "id": "s-155",
@@ -4141,7 +4740,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-156",
@@ -4164,7 +4766,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-157",
@@ -4187,7 +4793,8 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": []
  },
  {
   "id": "s-158",
@@ -4210,7 +4817,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-159",
@@ -4233,7 +4843,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-160",
@@ -4256,7 +4869,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  },
  {
   "id": "s-161",
@@ -4279,7 +4895,8 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": []
  },
  {
   "id": "s-162",
@@ -4302,7 +4919,11 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money",
+   "info"
+  ]
  },
  {
   "id": "s-163",
@@ -4326,7 +4947,8 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": []
  },
  {
   "id": "s-164",
@@ -4350,7 +4972,8 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": []
  },
  {
   "id": "s-165",
@@ -4374,7 +4997,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-166",
@@ -4398,7 +5024,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-167",
@@ -4422,7 +5051,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-168",
@@ -4446,7 +5078,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "info"
+  ]
  },
  {
   "id": "s-169",
@@ -4470,7 +5105,10 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "app"
+  ]
  },
  {
   "id": "s-170",
@@ -4494,6 +5132,9 @@
   "collectedAt": "2026-11-09",
   "origin": "AI보완",
   "isReal": false,
-  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인."
+  "note": "AI 생성 변형 문구. 실제 사건 아님. 출처 미확인.",
+  "demandTags": [
+   "money"
+  ]
  }
 ]
