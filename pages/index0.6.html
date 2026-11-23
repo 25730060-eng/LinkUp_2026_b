@@ -1296,8 +1296,11 @@ body #news-list{list-style:none;margin:0;padding:0}
   // ----- 홈: 최신 실제 사례 3건 -----
   function renderHome() {
     var list = $('home-case-list'); list.replaceChildren();
-    cases.filter(function (p) { return p.isReal; }).sort(SORTERS.latest).slice(0, 3)
-      .forEach(function (p) { list.appendChild(makeCard(p)); });
+    var seen = {};                                       // 같은 기사에서 나온 사례는 홈에 한 건만 (목록에는 모두 있음)
+    cases.filter(function (p) { return p.isReal; }).sort(SORTERS.latest).filter(function (p) {
+      var k = (p.source || p.id) + '|' + (p.sourceBasisDate || '');
+      if (seen[k]) return false; seen[k] = true; return true;
+    }).slice(0, 3).forEach(function (p) { list.appendChild(makeCard(p)); });
     $('home-cases').hidden = !list.children.length;
   }
 
