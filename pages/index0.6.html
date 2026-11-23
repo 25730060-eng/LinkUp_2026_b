@@ -490,6 +490,10 @@ body .btn-bookmark[aria-pressed="true"]{color:var(--brass)}
 body .btn-bookmark[aria-pressed="true"] svg{fill:currentColor}
 body .row-actions{gap:2px}
 
+body #state-saved-empty{align-items:stretch;text-align:center;padding:24px 16px;gap:8px}
+body #state-saved-empty .btn{margin-top:8px}
+body #state-saved-empty .state-desc{word-break:keep-all}
+
 </style>
 </head>
 <body>
@@ -795,6 +799,7 @@ body .row-actions{gap:2px}
       <div id="state-saved-empty" class="state-box" hidden>
         <p class="state-title">아직 저장한 사례가 없습니다</p>
         <p class="state-desc">사례 카드의 북마크 버튼을 누르면 여기에 모입니다</p>
+        <a class="btn btn-primary" href="#cases">사례 보러 가기</a>
       </div>
     </main>
   </section>
