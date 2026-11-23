@@ -494,6 +494,37 @@ body #state-saved-empty{align-items:stretch;text-align:center;padding:24px 16px;
 body #state-saved-empty .btn{margin-top:8px}
 body #state-saved-empty .state-desc{word-break:keep-all}
 
+/* 11/23 히어로 비주얼·모션, 최신 사례(기사) */
+body .hero{padding:20px 18px 20px;gap:6px;align-items:stretch}
+body .hero-visual{display:flex;justify-content:center;margin-bottom:-2px}
+.hero-door{overflow:visible}
+.hero-door .door-body{transform-origin:54px 90px;animation:knock 3.6s ease-in-out infinite}
+.hero-door .wave{opacity:0;animation:wave 3.6s ease-out infinite}
+.hero-door .w2{animation-delay:.12s}.hero-door .w3{animation-delay:.24s}
+@keyframes knock{0%,32%,100%{transform:rotate(0)}6%{transform:rotate(-5deg)}12%{transform:rotate(1deg)}18%{transform:rotate(-5deg)}24%{transform:rotate(1deg)}}
+@keyframes wave{0%{opacity:0}6%{opacity:1}30%{opacity:0}100%{opacity:0}}
+body .hero .door-title{margin-top:2px}
+.hero-chat{position:relative;height:74px;margin:6px 0 4px}
+.hero-chat .bubble{position:absolute;left:0;right:0;top:0;margin:0;padding:10px 12px;border-radius:14px 14px 14px 4px;background:rgba(255,255,255,.14);color:#fff;font-size:14px;line-height:1.4;opacity:0;transform:translateY(8px);animation:bubble 9s ease-in-out infinite}
+.hero-chat .bubble:nth-of-type(2){animation-delay:3s}
+.hero-chat .bubble:nth-of-type(3){animation-delay:6s}
+.hero-chat .bubble b{display:inline-block;margin-right:4px;color:#FFD66B;animation:blink 1.2s ease-in-out infinite}
+.hero-chat .chat-label{position:absolute;left:2px;bottom:0;font-size:12px;color:#E8D8BC}
+@keyframes bubble{0%{opacity:0;transform:translateY(8px)}5%,28%{opacity:1;transform:none}33%,100%{opacity:0;transform:translateY(-6px)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){
+  .hero-door .door-body,.hero-door .wave,.hero-chat .bubble,.hero-chat .bubble b{animation:none}
+  .hero-door .wave{opacity:1}
+  .hero-chat .bubble{opacity:0;transform:none}
+  .hero-chat .bubble:first-of-type{opacity:1}
+}
+body .news-card{border:0;border-top:1px solid #F0EBE4;padding:14px 0;gap:6px}
+body #news-list>.news-card:first-child{border-top:1px solid #E6DDD2}
+body .news-headline{font-size:15.5px;font-weight:800;line-height:1.4;flex:1;min-width:0}
+body .news-summary{font-size:13.5px;line-height:1.5;color:var(--sub);margin:0}
+body .news-open{text-decoration:none}
+body #news-list{list-style:none;margin:0;padding:0}
+
 </style>
 </head>
 <body>
@@ -517,10 +548,26 @@ body #state-saved-empty .state-desc{word-break:keep-all}
 
       <!-- 히어로: 서비스 소개 + 핵심 행동 버튼 (입력칸은 '메시지 확인' 화면으로 분리) -->
       <div class="door hero">
-        <span class="peephole" aria-hidden="true"></span>
-        <span class="handle" aria-hidden="true"><i></i></span>
+        <div class="hero-visual" aria-hidden="true">
+          <svg class="hero-door" viewBox="0 0 130 96" width="130" height="96" fill="none">
+            <g class="door-body">
+              <path d="M30 90V42a24 24 0 0 1 48 0v48z" fill="rgba(255,255,255,.1)" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+              <circle cx="54" cy="40" r="4" stroke="#E6C766" stroke-width="2.5"/>
+              <circle cx="68" cy="66" r="3.2" fill="#E6C766"/>
+            </g>
+            <path class="wave w1" d="M88 48a12 12 0 0 1 0 18" stroke="#E6C766" stroke-width="3" stroke-linecap="round"/>
+            <path class="wave w2" d="M97 41a22 22 0 0 1 0 32" stroke="#E6C766" stroke-width="3" stroke-linecap="round"/>
+            <path class="wave w3" d="M106 34a32 32 0 0 1 0 46" stroke="#E6C766" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
         <h2 class="door-title">누구세요?</h2>
         <p class="door-sub">자녀·손주라며 온 메시지,<br>열어 보기 전에 먼저 확인하세요</p>
+        <div class="hero-chat" aria-hidden="true">
+          <p class="bubble"><b>⚠</b> "엄마, 나 폰 고장 났어. 문자로 연락줘"</p>
+          <p class="bubble"><b>⚠</b> "아빠, 급해서 그런데 돈 좀 보내줄래?"</p>
+          <p class="bubble"><b>⚠</b> "할머니, 이 링크 좀 눌러서 확인해 줘"</p>
+          <span class="chat-label">이런 메시지, 의심해 보세요 (예시)</span>
+        </div>
         <a id="btn-start" class="btn btn-primary btn-lg" href="#check">메시지 확인하기</a>
       </div>
 
@@ -533,13 +580,9 @@ body #state-saved-empty .state-desc{word-break:keep-all}
         <ul id="home-case-list" class="card-list"></ul>
       </section>
 
-      <section id="news" class="news" aria-labelledby="news-title">
-        <h2 id="news-title" class="section-title">이런 사례가 늘고 있어요</h2>
-        <article class="news-card">
-          <h3 class="news-headline"><a id="news-link" href="https://www.hankookilbo.com/news/article/A2026073114470000889" target="_blank" rel="noopener noreferrer">"엄마 나 종수야" 호칭·이름까지 정확… 스미싱 범죄 더 악랄해졌다</a></h3>
-          <p class="news-summary">가족을 사칭한 스미싱이 자녀 이름과 호칭까지 맞춰 쓰는 방식으로 바뀌고 있다는 보도입니다. 한 민간 보고서에서 확인된 피해자의 약 94%가 50대 이상이었다고 합니다.</p>
-          <p class="case-meta"><span class="news-source">한국일보</span> · <time class="news-date" datetime="2026-08">2026-08</time> (새 탭에서 열림)</p>
-        </article>
+      <section id="news" class="news" aria-labelledby="news-title" hidden>
+        <h2 id="news-title" class="section-title">최신 사례</h2>
+        <ul id="news-list" class="card-list"></ul>
       </section>
 
       <section id="hotline" class="hotline" aria-label="긴급 신고처">
@@ -1019,6 +1062,7 @@ body #state-saved-empty .state-desc{word-break:keep-all}
   // =====================================================================
   var DATA_URL = '../data/cases_all.json';
   var TYPES_URL = '../data/types.json';
+  var NEWS_URL = '../data/news.json';
   var PAGE_SIZE = 20;
 
   var cases = [];                                        // 원본 배열
@@ -1073,7 +1117,8 @@ body #state-saved-empty .state-desc{word-break:keep-all}
   }
   function loadData() {
     setLoading(true);
-    return Promise.all([fetchJson(TYPES_URL), fetchJson(DATA_URL)]).then(function (res) {
+    var newsReq = fetchJson(NEWS_URL).catch(function (err) { console.warn('[기사 불러오기 실패]', err); return []; });   // 기사는 없어도 앱은 동작
+    return Promise.all([fetchJson(TYPES_URL), fetchJson(DATA_URL), newsReq]).then(function (res) {
       types = res[0];
       types.forEach(function (t) { typeName[t.typeId] = t.typeName; });
       var ids = types.map(function (t) { return t.typeId; });
@@ -1084,6 +1129,7 @@ body #state-saved-empty .state-desc{word-break:keep-all}
       setLoading(false);
       dataReady = true;
       renderHome();
+      renderNews(res[2]);
       renderList(true);
       renderSaved();
       show(currentName());                               // 상세 주소로 바로 들어온 경우 이제 사례를 찾을 수 있음
@@ -1253,6 +1299,36 @@ body #state-saved-empty .state-desc{word-break:keep-all}
     cases.filter(function (p) { return p.isReal; }).sort(SORTERS.latest).slice(0, 3)
       .forEach(function (p) { list.appendChild(makeCard(p)); });
     $('home-cases').hidden = !list.children.length;
+  }
+
+  // 홈 '최신 사례': 정부·금융당국 기관 원문 링크가 있는 기사 중 기준일 최신순 3건 (data/news.json)
+  var OFFICIAL_HOSTS = ['korea.kr', 'fsc.go.kr', 'fss.or.kr'];
+  function officialUrl(u) {
+    if (typeof u !== 'string' || u.indexOf('https://') !== 0) return false;
+    var host = u.split('/')[2] || '';
+    return OFFICIAL_HOSTS.some(function (h) { return host === h || host.slice(-(h.length + 1)) === '.' + h; });
+  }
+  function renderNews(list) {
+    var ul = $('news-list'); ul.replaceChildren();
+    var items = (Array.isArray(list) ? list : []).filter(function (n) {
+      return n && typeof n.title === 'string' && officialUrl(n.sourceUrl) && /^\d{4}-\d{2}-\d{2}$/.test(n.sourceBasisDate || '');
+    }).sort(function (a, b) { return a.sourceBasisDate < b.sourceBasisDate ? 1 : a.sourceBasisDate > b.sourceBasisDate ? -1 : 0; }).slice(0, 3);
+    items.forEach(function (n) {
+      var li = document.createElement('li'); li.className = 'news-card';
+      var row = document.createElement('div'); row.className = 'case-row';
+      var h = document.createElement('h3'); h.className = 'news-headline'; h.textContent = n.title;
+      var a = document.createElement('a'); a.className = 'icon-open news-open'; a.href = n.sourceUrl;
+      a.target = '_blank'; a.rel = 'noopener noreferrer'; a.setAttribute('aria-label', '기사 원문 보기: ' + n.title + ' (새 탭)');
+      a.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>';
+      row.appendChild(h); row.appendChild(a);
+      var sum = document.createElement('p'); sum.className = 'news-summary'; sum.textContent = n.summary || '';
+      var meta = document.createElement('p'); meta.className = 'case-meta';
+      var src = document.createElement('span'); src.className = 'news-source'; src.textContent = n.publisher || '';
+      var t = document.createElement('time'); t.className = 'news-date'; t.setAttribute('datetime', n.sourceBasisDate); t.textContent = n.sourceBasisDate;
+      meta.appendChild(src); meta.appendChild(document.createTextNode(' · ')); meta.appendChild(t);
+      li.appendChild(row); li.appendChild(sum); li.appendChild(meta); ul.appendChild(li);
+    });
+    $('news').hidden = !items.length;
   }
 
   // ----- 상세 -----
